@@ -1,9 +1,10 @@
 .App {
   text-align: center;
+  font-family: Unbounded;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
@@ -14,13 +15,13 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #2b002b;
+  height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: start;
+  /* justify-content: center; */
+  /* font-size: calc(10px + 2vmin); */
   color: white;
 }
 
@@ -32,7 +33,42 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.title {
+  color: #2b002b;
+  font-size: xx-large;
+  padding: 20px 0;
+  text-transform: uppercase;
+}
+
+.topics {
+  background-color: #61dafb;
+  border-radius: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 85%;
+  min-height: 300px;
+  margin: auto;
+  padding: 30px 0;
+}
+
+.btnTheme {
+  background: rgb(55, 3, 92);
+  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 20%, rgba(253, 187, 45, 1) 55%);
+  border-radius: 30px;
+  border: none;
+  width: 30%;
+  height: 120px;
+  margin: 10px 0;
+}
+
+.topic {
+  font-size: x-large;
+  font-family: Unbounded;
 }
