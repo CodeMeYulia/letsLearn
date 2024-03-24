@@ -30,9 +30,6 @@ const AllWords = [
         topic: 'nature',
     }
 ]
-console.log(AllWords);
-console.log(typeof AllWords);
-
 
 const ListWords = () => {
 
@@ -45,7 +42,6 @@ const ListWords = () => {
             <div className="theme">/{point.topic}</div>
             <button type="button" id="del" className="del"> X </button>
             <button type="button" id="red" className="red">ред.</button>
-
         </li>
 
     );

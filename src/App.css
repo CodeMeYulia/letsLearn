@@ -59,7 +59,7 @@ main {
 }
 
 aside {
-  width: 25%;
+  min-width: 25%;
   height: 100%;
   background-color: rgb(217, 255, 0);
 }
@@ -67,13 +67,12 @@ aside {
 .list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0 7px;
 }
 
 .add {
   background-color: rgb(255, 57, 186);
-  ;
   border-radius: 0 0 50% 50%;
   width: 30px;
   height: 30px;
@@ -88,28 +87,39 @@ aside {
 }
 
 .num {
+  width: 1%;
   padding: 0 5px;
 }
 
 .baseWord {
+  width: 15%;
   font-weight: 900;
   padding: 0 5px;
 }
 
 .transcrtn {
+  width: 15%;
+  padding: 0 5px;
+}
+
+.transltn {
+  width: 15%;
   padding: 0 5px;
 }
 
 .theme {
+  width: 10%;
   font-style: italic;
-}
-
-.transltn {
-  padding: 0 5px;
+  margin: 0 7%;
 }
 
 .del {
-  margin-left: 10px;
+  width: 5%;
+  margin: 0 10px;
+}
+
+.red {
+  width: 10%;
 }
 
 .card-item {
