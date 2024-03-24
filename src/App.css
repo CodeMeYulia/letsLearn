@@ -1,10 +1,28 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
   font-family: Unbounded;
+  height: 100vh;
+}
+
+.App-header {
+  background-color: #33013f;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0 20px;
+}
+
+.logo_point {
+  width: 120px;
 }
 
 .App-logo {
-  height: 10vmin;
+  min-height: 10vh;
   pointer-events: none;
 }
 
@@ -14,15 +32,10 @@
   }
 }
 
-.App-header {
-  background-color: #2b002b;
-  height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  /* justify-content: center; */
-  /* font-size: calc(10px + 2vmin); */
+.nav-point a {
   color: white;
+  text-decoration: none;
+  padding: 0 7px;
 }
 
 .App-link {
@@ -39,6 +52,116 @@
   }
 }
 
+main {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+aside {
+  width: 25%;
+  height: 100%;
+  background-color: rgb(217, 255, 0);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 7px;
+}
+
+.add {
+  background-color: rgb(255, 57, 186);
+  ;
+  border-radius: 0 0 50% 50%;
+  width: 30px;
+  height: 30px;
+  font-size: xx-large;
+  border-style: none;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.num {
+  padding: 0 5px;
+}
+
+.baseWord {
+  font-weight: 900;
+  padding: 0 5px;
+}
+
+.transcrtn {
+  padding: 0 5px;
+}
+
+.theme {
+  font-style: italic;
+}
+
+.transltn {
+  padding: 0 5px;
+}
+
+.del {
+  margin-left: 10px;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  border-radius: 30px;
+  width: 400px;
+  height: 250px;
+  text-align: center;
+  padding: 30px 40px;
+  margin: 50px;
+}
+
+.word {
+  font-size: xxx-large;
+  padding: 20px 10px;
+}
+
+.transcription {
+  padding: 10px;
+}
+
+.reverse {
+  max-width: 200px;
+  background-color: rgb(255, 57, 186);
+  border: none;
+  border-radius: 15px;
+  padding: 10px 30px;
+  font-size: x-large;
+  margin: auto;
+}
+
+.reverse:hover {
+  background-color: rgba(255, 57, 186, 0.3);
+  border: 5px dotted white;
+  color: rgb(252, 252, 252);
+}
+
+.res {
+  background-color: rgba(255, 57, 186, 0.3);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 130px;
+  height: 50px;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+
 .title {
   color: #2b002b;
   font-size: xx-large;
@@ -47,28 +170,47 @@
 }
 
 .topics {
-  background-color: #61dafb;
+  background-color: rgb(217, 255, 0);
   border-radius: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 85%;
   min-height: 300px;
-  margin: auto;
+  margin: 20px auto;
   padding: 30px 0;
 }
 
-.btnTheme {
-  background: rgb(55, 3, 92);
-  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 20%, rgba(253, 187, 45, 1) 55%);
+.topic-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: rgb(250, 239, 255);
   border-radius: 30px;
-  border: none;
   width: 30%;
   height: 120px;
   margin: 10px 0;
+  font-size: 1.5em;
+  font-family: Unbounded;
 }
 
-.topic {
-  font-size: x-large;
-  font-family: Unbounded;
+.tocard {
+  text-decoration: none;
+}
+
+.topic-card:hover {
+  background-color: rgb(252, 185, 229);
+  border: 5px dotted white;
+  color: rgb(252, 252, 252);
+  width: 30%;
+  height: 120px;
+}
+
+
+
+.footer {
+  background-color: #33013f;
+  height: 10vh;
+
 }

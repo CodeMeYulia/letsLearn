@@ -3,9 +3,11 @@ import Card from './Card'
 
 const CardTopic = ({ topic }) => {
     return (
-        <button className="btnTheme">
-            <div className="topic">{topic}</div>
-        </button>
+        <div className="topic-card">
+            <a href="#"
+                // onClick={handleClick} 
+                className="tocard">{topic}</a>
+        </div>
     );
 }
 

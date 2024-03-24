@@ -1,11 +1,12 @@
 import React from "react";
 
-function Card() {
+function Card(item) {
     return (
-        <div>
-            <div className="lang">english</div>
-            <div className="word">word</div>
-            <button className="reverse">reverse</button>
+        <div className="card-item">
+            <div className="lang">{item.lang}</div>
+            <div className="word">{item.word}</div>
+            <div className="transcription">{item.transcription}</div>
+            <button className="reverse">upside</button>
         </div>
     );
 }
