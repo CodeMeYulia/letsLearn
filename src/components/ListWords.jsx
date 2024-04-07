@@ -1,62 +1,46 @@
 import React from "react";
+import { useState } from "react";
 
-const AllWords = [
-    {
-        id: '1',
-        word: 'flower',
-        transcription: '[ˈflaʊə(r)]',
-        translation: 'цветок',
-        topic: 'nature',
-    },
-    {
-        id: '2',
-        word: 'grass',
-        transcription: '[ɡrɑːs]',
-        translation: 'трава, травка, газон',
-        topic: 'nature',
-    },
-    {
-        id: '3',
-        word: 'bunch',
-        transcription: '[bʌntʃ]',
-        translation: 'пучок, гроздь, связка',
-        topic: 'nature',
-    },
-    {
-        id: '4',
-        word: 'tree',
-        transcription: '[triː]',
-        translation: 'дерево, древо, вал',
-        topic: 'nature',
+function ListWords(string) {
+    const [used, setRedacted] = useState(string.used || true);
+
+    const handleChange = () => {
+        setRedacted(!used);
     }
-]
 
-const ListWords = () => {
 
-    const words = AllWords.map((point) =>
-        <li className="point">
-            <div className="num">{point.id}</div>
-            <div className="baseWord">{point.word}</div>
-            <div className="transcrtn">{point.transcription}</div>
-            <div className="transltn">{point.translation}</div>
-            <div className="theme">/{point.topic}</div>
-            <button type="button" id="del" className="del"> X </button>
-            <button type="button" id="red" className="red">ред.</button>
-        </li>
-
-    );
-    console.log(words);
-
-    return (
-        <div className="list">
-            <button type="button" id="add" className="add">+</button>
-            <h3>Слова</h3>
-            <div className="listPoints">
-                {words}
-            </div>
-
-        </div>
-    )
+    if (used === true) {
+        return (
+            <React.Fragment>
+                <div className="listPoints" >
+                    <li className="point">
+                        <div className="num">{string.id}</div>
+                        <div className="baseWord">{string.word}</div>
+                        <div className="transcrtn">{string.transcription}</div>
+                        <div className="transltn">{string.translation}</div>
+                        <div className="theme">/{string.topic}</div>
+                        <button id="del" className="del"> X </button>
+                        <button id="red" className="red" onClick={handleChange}>ред.</button>
+                    </li>
+                </div>
+            </React.Fragment>
+        )
+    } else {
+        return (
+            <React.Fragment>
+                <div className="formPoints" onClick={handleChange}>
+                    <li className="point">
+                        <div className="baseWord">{string.word}</div>
+                        <div className="transcrtn">{string.transcription}</div>
+                        <div className="transltn">{string.translation}</div>
+                        <div className="theme">/{string.topic}</div>
+                        <button id="save" className="save"> сохр </button>
+                        <button id="res" className="reset" >отм</button>
+                    </li>
+                </div>
+            </React.Fragment>
+        )
+    };
 
 }
 

@@ -119,13 +119,29 @@ aside {
   margin: 50px;
 }
 
-.word {
-  font-size: xxx-large;
-  padding: 20px 10px;
+.card-item2 {
+  background-color: rgb(255, 57, 186);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  border-radius: 30px;
+  width: 400px;
+  height: 250px;
+  text-align: center;
+  padding: 30px 40px;
+  margin: 50px;
 }
 
-.transcription {
-  padding: 10px;
+.word,
+.translation {
+  font-size: 5rem;
+  padding: 15px 10px;
+}
+
+.transcription,
+.word2 {
+  font-size: 1.3rem;
+  padding: 0 10px 10px 10px;
 }
 
 .reverse {
@@ -210,4 +226,14 @@ aside {
   background-color: #33013f;
   height: 10vh;
 
+}
+
+.illustration {
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  text-align: center;
+  padding-top: 40px;
 }
