@@ -1,13 +1,14 @@
 import React from "react";
-import CardTopic from '../components/CardTopic';
-import Card from "../components/Card";
+import CardTopic from '../CardTopic/CardTopic';
+import Card from "../Card";
+import style from './ListTopic.module.css';
 
 function ListTopics() {
     return (
-        <div class>
-            <h1 className="title">Выбрать тему для повторения</h1>
-            <div className="card__body"></div>
-            <div className="topics">
+        <div className={style.container}>
+            <h1 className={style.title}>Выбрать тему для повторения</h1>
+            {/* <div className={style.card__body}></div> */}
+            <div className={style.topics}>
                 <CardTopic topic="География" />
                 <CardTopic topic="Магазин" />
                 <CardTopic topic="Хобби и увлечения" />
@@ -17,7 +18,6 @@ function ListTopics() {
                 <CardTopic topic="Семья" />
                 <CardTopic topic="Работа" />
                 <CardTopic topic="IT - Словарь" />
-                {/* <Card /> */}
             </div>
         </div>
     );

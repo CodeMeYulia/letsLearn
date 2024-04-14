@@ -47,6 +47,7 @@ aside {
   min-width: 25%;
   height: 100%;
   background-color: rgb(217, 255, 0);
+  padding: 0 20px 0 0;
 }
 
 .list {
@@ -107,16 +108,22 @@ aside {
   width: 10%;
 }
 
+.cardOneBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .card-item {
   display: flex;
   flex-direction: column;
   border: 1px solid grey;
   border-radius: 30px;
-  width: 400px;
+  width: 30vw;
   height: 250px;
   text-align: center;
   padding: 30px 40px;
-  margin: 50px;
+  margin: 2rem;
 }
 
 .card-item2 {
@@ -125,23 +132,24 @@ aside {
   flex-direction: column;
   border: 1px solid grey;
   border-radius: 30px;
-  width: 400px;
+  width: 30vw;
   height: 250px;
   text-align: center;
   padding: 30px 40px;
-  margin: 50px;
+  margin: 3rem;
 }
 
 .word,
 .translation {
-  font-size: 5rem;
-  padding: 15px 10px;
+  font-size: 4rem;
+  margin: auto;
 }
 
 .transcription,
 .word2 {
   font-size: 1.3rem;
   padding: 0 10px 10px 10px;
+  margin: auto;
 }
 
 .reverse {
@@ -168,7 +176,7 @@ aside {
   justify-content: space-around;
   width: 130px;
   height: 50px;
-  margin: 10px 0;
+  margin: 1rem;
   padding: 0 10px;
 }
 
@@ -180,47 +188,6 @@ aside {
   text-transform: uppercase;
 }
 
-.topics {
-  background-color: rgb(217, 255, 0);
-  border-radius: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 85%;
-  min-height: 300px;
-  margin: 20px auto;
-  padding: 30px 0;
-}
-
-.topic-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background: rgb(250, 239, 255);
-  border-radius: 30px;
-  width: 30%;
-  height: 120px;
-  margin: 10px 0;
-  font-size: 1.5em;
-  font-family: Unbounded;
-}
-
-.tocard {
-  text-decoration: none;
-}
-
-.topic-card:hover {
-  background-color: rgb(252, 185, 229);
-  border: 5px dotted white;
-  color: rgb(252, 252, 252);
-  width: 30%;
-  height: 120px;
-}
-
-.topic-card:focus {
-  background-color: rgb(252, 185, 229);
-}
 
 .footer {
   background-color: #33013f;
@@ -236,4 +203,8 @@ aside {
   margin: auto;
   text-align: center;
   padding-top: 40px;
+}
+
+.slade {
+  font-size: 3rem;
 }

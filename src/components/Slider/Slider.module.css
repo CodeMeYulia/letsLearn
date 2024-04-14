@@ -1,0 +1,25 @@
+.element.style {
+    position: none;
+}
+
+.modal {
+    background-color: blue;
+    width: 75%;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    padding: 10px;
+    margin: auto;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.btn {
+    background-color: yellowgreen;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}
