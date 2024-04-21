@@ -18,6 +18,7 @@ function ListTopics() {
                 <CardTopic topic="Семья" />
                 <CardTopic topic="Работа" />
                 <CardTopic topic="IT - Словарь" />
+                <CardTopic topic="Природа" />
             </div>
         </div>
     );

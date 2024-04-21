@@ -15,6 +15,7 @@
 
 .tocard {
     text-decoration: none;
+    color: black;
 }
 
 .topic_card:hover {

@@ -1,0 +1,13 @@
+.header {
+    background-color: #33013f;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 0 20px;
+}
+
+a {
+    color: aliceblue;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Form from "./Form/Form";
 
 function ListWords(string) {
     const [used, setRedacted] = useState(string.used || true);
@@ -8,6 +9,9 @@ function ListWords(string) {
         setRedacted(!used);
     }
 
+    const handleChangeDel = (item) => {
+        //удалить строчку
+    }
 
     if (used === true) {
         return (
@@ -19,7 +23,7 @@ function ListWords(string) {
                         <div className="transcrtn">{string.transcription}</div>
                         <div className="transltn">{string.translation}</div>
                         <div className="theme">/{string.topic}</div>
-                        <button id="del" className="del"> X </button>
+                        <button id="del" className="del" onClick={handleChangeDel}> X </button>
                         <button id="red" className="red" onClick={handleChange}>ред.</button>
                     </li>
                 </div>
@@ -28,16 +32,12 @@ function ListWords(string) {
     } else {
         return (
             <React.Fragment>
-                <div className="formPoints" onClick={handleChange}>
-                    <li className="point">
-                        <div className="baseWord">{string.word}</div>
-                        <div className="transcrtn">{string.transcription}</div>
-                        <div className="transltn">{string.translation}</div>
-                        <div className="theme">/{string.topic}</div>
-                        <button id="save" className="save"> сохр </button>
-                        <button id="res" className="reset" >отм</button>
-                    </li>
-                </div>
+                <Form
+                    word={string.word}
+                    transcription={string.transcription}
+                    translation={string.translation}
+                    topic={string.topic}
+                />
             </React.Fragment>
         )
     };
