@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -7,8 +11,6 @@
   height: 100vh;
 }
 
-
-
 .logo_point {
   width: 120px;
 }
@@ -17,7 +19,6 @@
   height: 10vh;
   pointer-events: none;
 }
-
 
 .nav-point a {
   color: white;
@@ -36,17 +37,14 @@ main {
 }
 
 aside {
-  min-width: 25%;
+  min-width: 65%;
   height: 100%;
   background-color: rgb(217, 255, 0);
-  padding: 0 20px 0 0;
+  padding: 0 30px;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0 7px;
+h3 {
+  font-size: 1rem;
 }
 
 .add {
@@ -58,47 +56,7 @@ aside {
   border-style: none;
 }
 
-.point {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
 
-.num {
-  width: 1%;
-  padding: 0 5px;
-}
-
-.baseWord {
-  width: 15%;
-  font-weight: 900;
-  padding: 0 5px;
-}
-
-.transcrtn {
-  width: 15%;
-  padding: 0 5px;
-}
-
-.transltn {
-  width: 15%;
-  padding: 0 5px;
-}
-
-.theme {
-  width: 10%;
-  font-style: italic;
-  margin: 0 7%;
-}
-
-.del {
-  width: 5%;
-  margin: 0 10px;
-}
-
-.red {
-  width: 10%;
-}
 
 .cardOneBlock {
   display: flex;
@@ -185,15 +143,19 @@ aside {
 .title {
   color: #2b002b;
   font-size: xx-large;
-  padding: 20px 0;
+  padding: 20px 100px;
   text-transform: uppercase;
 }
 
 
 .footer {
   background-color: #33013f;
-  height: 10vh;
-
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0 20px;
 }
 
 .illustration {

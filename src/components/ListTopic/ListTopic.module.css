@@ -13,8 +13,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 85%;
-    min-height: 300px;
+    width: 75%;
+    min-height: 250px;
     margin: 20px auto;
     padding: 15px 10px;
 }

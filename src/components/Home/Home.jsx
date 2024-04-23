@@ -1,44 +1,45 @@
-import React from "react";
-import style from './Home.module.css';
-import ListWords from '../ListWords';
+import React, { useState } from "react";
+import Word from '../Listwords/ListWords';
 import ListTopics from "../ListTopic/ListTopics";
+import Form from "../Form/Form";
 
 function Home() {
+
     const allWords = [
         {
             id: 1,
             word: 'flower',
             transcription: '[ˈflaʊə(r)]',
             translation: 'цветок',
-            topic: 'nature'
+            topic: 'природа'
         },
         {
             id: 2,
             word: 'grass',
             transcription: '[ɡrɑːs]',
             translation: 'трава, газон',
-            topic: 'nature'
+            topic: 'природа'
         },
         {
             id: 3,
             word: 'bunch',
             transcription: '[bʌntʃ]',
             translation: 'пучок, связка',
-            topic: 'nature'
+            topic: 'природа'
         },
         {
             id: 4,
             word: 'tree',
             transcription: '[tri:]',
             translation: 'дерево',
-            topic: 'nature'
+            topic: 'природа'
         },
         {
             id: 5,
             word: 'birch',
             transcription: '[bə:tʃ]',
             translation: 'береза',
-            topic: 'nature'
+            topic: 'природа'
         },
         {
             id: 6,
@@ -52,48 +53,73 @@ function Home() {
             word: 'glade',
             transcription: '[ɡleɪd]',
             translation: 'поляна',
-            topic: 'nature'
+            topic: 'природа'
         },
         {
             id: 8,
             word: 'needles',
             transcription: '[ɡleɪd]',
             translation: 'хвоя',
-            topic: 'nature'
+            topic: 'природа'
         },
         {
             id: 9,
             word: 'lawn',
             transcription: '[lɔ:n]',
             translation: 'газон',
-            topic: 'nature'
+            topic: 'природа'
         },
         {
             id: 10,
             word: 'petal',
             transcription: '[ˈpetl]',
             translation: 'лепесток',
-            topic: 'nature'
+            topic: 'работа'
         }
     ];
+
+    const [string, setString] = useState(true);
+    const handleChange = (obj) => {
+        setString((string) => [string, obj])
+    }
+
+    const [] = useState();
+    const handleSubmit = (obj) => {
+        console.log('Mao');
+
+    }
 
     return (
         <main>
             <aside>
-                <div className='list'>
+                <div>
                     <button type="button" id="add" className="add">+</button>
-                    <h3>Слова</h3>
+                    <h2>Слова для повторения</h2>
                     <div>
                         {
-                            allWords.map((item) => {
+                            allWords.map((item, index) => {
                                 return (
-                                    <ListWords
-                                        id={item.id}
-                                        word={item.word}
-                                        transcription={item.transcription}
-                                        translation={item.translation}
-                                        topic={item.topic}
-                                    />
+                                    <>
+                                        <Word
+                                            key={index}
+                                            id={item.id}
+                                            word={item.word}
+                                            transcription={item.transcription}
+                                            translation={item.translation}
+                                            topic={item.topic}
+                                            onChange={handleChange}
+                                        />
+                                        <Form
+                                            key={index}
+                                            id={item.id}
+                                            word={item.word}
+                                            transcription={item.transcription}
+                                            translation={item.translation}
+                                            topic={item.topic}
+                                            onSubmit={handleSubmit}
+                                        />
+                                    </>
+
                                 )
                             })
                         }

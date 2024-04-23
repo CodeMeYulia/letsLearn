@@ -21,9 +21,9 @@ function Card(item) {
             <div className="card-item2" onClick={handleChange}>
                 <div className="translation">{item.translation}</div>
                 <div className="word2">{item.word}</div>
-                <div className="illustration">
+                {/* <div className="illustration">
                     вставить сюда картинку
-                </div>
+                </div> */}
             </div>
         );
     }

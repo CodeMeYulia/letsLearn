@@ -1,13 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Header from './components/Header/Header';
 import Home from "./components/Home/Home";
 import About from './components/About/About';
 import Learn from './components/Learn/Learn'
-import ListTopics from './components/ListTopic/ListTopics';
-import Card from './components/Card';
-import Slider from './components/Slider/Slider';
-
 
 function App() {
 
@@ -23,7 +19,11 @@ function App() {
         </Routes>
 
         <footer>
-          <div className='footer'></div>
+          <div className='footer'>
+            <div>ItGirlSchool</div>
+            <div>2024</div>
+            <div>@codemeyulia</div>
+          </div>
         </footer>
 
       </div>

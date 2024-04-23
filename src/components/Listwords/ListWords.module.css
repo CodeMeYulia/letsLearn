@@ -1,0 +1,48 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 7px 0;
+}
+
+
+.point {
+    background-color: aliceblue;
+    border: 1px solid blue;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.baseWord {
+    width: 15%;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.transcrtn {
+    width: 15%;
+    padding: 0 5px;
+}
+
+.transltn {
+    width: 15%;
+    padding: 0 5px;
+}
+
+.theme {
+    width: 10%;
+    font-style: italic;
+    margin: 0 7%;
+}
+
+.del {
+    width: 5%;
+    margin: 0 10px;
+}
+
+.red {
+    width: 10%;
+}

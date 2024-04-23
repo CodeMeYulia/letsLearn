@@ -1,0 +1,21 @@
+input {
+    padding: 7px;
+    width: 20%;
+    text-align: start;
+    font-size: 1.2rem;
+
+}
+
+.point {
+    background-color: rgb(252, 249, 216);
+    border: 1px solid blue;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.idNew {
+    width: 3rem;
+}

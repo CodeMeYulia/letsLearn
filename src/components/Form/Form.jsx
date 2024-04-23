@@ -1,36 +1,25 @@
 import React, { useState } from 'react';
 import style from './Form.module.css';
 
-export default function Form(string) {
-    const { word, transcription, translation, topic } = string;
+function Form(props) {
 
-    const [used, setRedacted] = useState(string.used || true);
-
-    const handleChangeReset = () => {
-        setRedacted(used)
-    }
-
-    const handleChangeSaveNew = () => {
-        // console.log(inputs)
-        // if (input.value) {
-        //     return (
-        //         alert('mao')
-        //     )
-        // }
-
-    }
+    const { id, word, transcription, translation, topic, onSubmit } = props;
+    console.log(props);
 
     return (
-        // console.log('mao')
-        <div className="listPoints" >
-            <form className="point form">
-                <input className="baseWord" value=''></input>
-                <input className="transcrtn" value=''></input>
-                <input className="transltn" value=''></input>
-                <input className="theme" value=''></input>
-                <button type="submit" id="save" className="save" onClick={handleChangeSaveNew}> сохр </button>
-                <button id="res" className="reset" onClick={handleChangeReset}>отм</button>
-            </form>
-        </div >
+        <form className={style.point}>
+
+            <input type="num" value={id} className={style.idNew} required />
+            <input type="text" value={word} />
+            <input type="text" value={transcription} />
+            <input type="text" value={translation} />
+            <input type="text" value={topic} />
+            <div>
+                <button id="del" className="save" onSubmit={onSubmit}> сохр. </button>
+                <button id="red" className="esc" >отм.</button>
+            </div>
+        </form>
     )
 }
+
+export default Form;

@@ -1,12 +1,24 @@
 import React from "react";
 import CardTopic from '../CardTopic/CardTopic';
-import Card from "../Card";
 import style from './ListTopic.module.css';
 
-function ListTopics() {
+function ListTopics(allWords) {
+
+    // let currentWords = [];
+
+    // const handleClick = (topic) => {
+    //     allWords.forEach(words => {
+    //         if (topic === words.topic) {
+    //             currentWords = currentWords.push(words);
+    //             console.log(currentWords);
+    //             return currentWords;
+    //         }
+    //     });
+    // }
+
     return (
         <div className={style.container}>
-            <h1 className={style.title}>Выбрать тему для повторения</h1>
+            <h2>Выбрать тему для повторения</h2>
             {/* <div className={style.card__body}></div> */}
             <div className={style.topics}>
                 <CardTopic topic="География" />
