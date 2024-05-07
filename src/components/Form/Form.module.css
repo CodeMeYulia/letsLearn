@@ -3,7 +3,7 @@ input {
     width: 20%;
     text-align: start;
     font-size: 1.2rem;
-
+    font-style: italic;
 }
 
 .point {
@@ -17,5 +17,5 @@ input {
 }
 
 .idNew {
-    width: 3rem;
+    width: 2.2rem;
 }

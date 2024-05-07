@@ -1,23 +1,8 @@
 import React, { useState } from "react";
 import style from './Slider.module.css';
 import Card from "../Card";
-import Modal from 'react-modal';
 
 function Slider() {
-    //модальное окно
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const openModal = () => {
-        setModalIsOpen(true);
-    };
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
-    const modalContent = (
-        <div className={style.modal}>
-            <p className={style.title}>cлова закончились</p>
-            <button onClick={closeModal} className={style.btn}>Начать сначала</button>
-        </div>
-    );
 
     const allWords = [
         {
@@ -114,7 +99,6 @@ function Slider() {
             setIndex(index + 1)
         } else {
             setIndex(index = 0);
-            openModal();
         }
     };
 
@@ -136,9 +120,7 @@ function Slider() {
                 </div>
             </div>
             <p className='count'>{currentCard.id}/{allWords.length}</p>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-                {modalContent}
-            </Modal>
+
         </ div>
 
     )

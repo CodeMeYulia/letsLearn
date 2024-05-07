@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Word from '../Listwords/ListWords';
 import ListTopics from "../ListTopic/ListTopics";
+import ListWord from "../Listwords/ListWords";
 import Form from "../Form/Form";
 
 function Home() {
@@ -78,20 +79,25 @@ function Home() {
         }
     ];
 
-    const [string, setString] = useState(true);
-    const handleChange = (obj) => {
-        setString((string) => [string, obj])
+    const [string, setString] = useState([]);
+
+    const handleChange = () => {
+
+        // setObj(event.target.id.value, event.target.word.value, event.target.transcription.value, event.target.topic.value, event.target.translation.value)
     }
 
-    const [] = useState();
-    const handleSubmit = (obj) => {
+    const handleClick = () => {
         console.log('Mao');
+    }
 
+    const Word = () => {
+        const [obj, setObj] = useState({ allWords });
     }
 
     return (
         <main>
             <aside>
+
                 <div>
                     <button type="button" id="add" className="add">+</button>
                     <h2>Слова для повторения</h2>
@@ -100,7 +106,7 @@ function Home() {
                             allWords.map((item, index) => {
                                 return (
                                     <>
-                                        <Word
+                                        <ListWord
                                             key={index}
                                             id={item.id}
                                             word={item.word}
@@ -108,25 +114,18 @@ function Home() {
                                             translation={item.translation}
                                             topic={item.topic}
                                             onChange={handleChange}
+                                            onClick={handleClick}
                                         />
-                                        <Form
-                                            key={index}
-                                            id={item.id}
-                                            word={item.word}
-                                            transcription={item.transcription}
-                                            translation={item.translation}
-                                            topic={item.topic}
-                                            onSubmit={handleSubmit}
-                                        />
+                                        {/* <Form onSave={handleSave}
+                                            // onCheck={handleOpenModal} 
+                                            /> */}
                                     </>
-
                                 )
                             })
                         }
                     </div>
                 </div>
             </aside>
-
             <ListTopics />
         </main>
     )
