@@ -12,7 +12,7 @@ function Card(item) {
             <div className="card-item" onClick={handleChange}>
                 <div className="word">{item.word}</div>
                 <div className="transcription">{item.transcription}</div>
-                <button className="reverse">upside</button>
+                <button className="reverse" autoFocus >перевод</button>
             </div>
         );
     } else {
@@ -21,9 +21,6 @@ function Card(item) {
             <div className="card-item2" onClick={handleChange}>
                 <div className="translation">{item.translation}</div>
                 <div className="word2">{item.word}</div>
-                {/* <div className="illustration">
-                    вставить сюда картинку
-                </div> */}
             </div>
         );
     }
