@@ -14,7 +14,7 @@ const Header = () => {
             <Link to="/about">About</Link>
             <Link to="/letslearn">Learn</Link>
 
-            <label htmlFor="search"><input type="search" name="search" id="search" /> - search -</label>
+            <label htmlFor="search"><input type="search" name="search" id="search" className="search" /> - search -</label>
 
             <div className="nav-point">
                 <a href="">LogIn</a>

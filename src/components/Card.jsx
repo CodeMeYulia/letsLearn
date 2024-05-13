@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import React from "react";
 
 function Card(item) {
@@ -7,12 +7,20 @@ function Card(item) {
         setReversed(!base);
     }
 
+    const btnRef = useRef(null);
+
+    useEffect(() => {
+        if (btnRef.current) {
+            btnRef.current.focus();
+        }
+    }, []);
+
     if (base === true) {
         return (
             <div className="card-item" onClick={handleChange}>
                 <div className="word">{item.word}</div>
-                <div className="transcription">{item.transcription}</div>
-                <button className="reverse" autoFocus >перевод</button>
+                <div className="transcription" >{item.transcription}</div>
+                <button className="reverse" ref={btnRef} >перевод</button>
             </div>
         );
     } else {

@@ -22,7 +22,6 @@
 
 .nav-point a {
   color: white;
-  text-decoration: none;
   padding: 0 7px;
 }
 
@@ -55,8 +54,6 @@ h3 {
   font-size: xx-large;
   border-style: none;
 }
-
-
 
 .cardOneBlock {
   display: flex;
