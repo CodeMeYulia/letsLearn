@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import style from './Form.module.css';
 
 function Form(props) {
-    const { id, word, transcription, translation, topic, onSubmit } = props;
+    const { id, word, transcription, translation, topic, onSubmit, inputValue, setInputValue } = props;
     console.log(props);
 
 
@@ -20,6 +20,10 @@ function Form(props) {
                 <button type='button' id="esc" className="esc" >отм.</button>
             </div>
         </form>
+        // <form>
+        //     <input type="text" name="" id="" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+
+        // </form>
     )
 }
 

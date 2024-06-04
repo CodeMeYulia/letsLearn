@@ -84,17 +84,22 @@ function Slider() {
     //определяем карточку
     let currentCard = allWords[index];
 
+    //задаем значение по умолчанию без перевода
+    const [base, setReversed] = useState(true);
+
     //предыдущая карточка
     const handleClickPrew = () => {
         if (index > 0) {
             setIndex(index - 1)
+            setReversed(true);
         } else {
             alert('ups!');
         }
     };
     //следующая карточка
     const handleClickNext = () => {
-        console.log(allWords.length);
+        // console.log(allWords.length);
+        setReversed(true);
         if (index < allWords.length - 1) {
             setIndex(index + 1)
         } else {
@@ -114,13 +119,14 @@ function Slider() {
                     transcription={currentCard.transcription}
                     translation={currentCard.translation}
                     topic={currentCard.topic}
+                    isShowTranslation={base}
+                    onShowTranslation={setReversed}
                 />
                 <div className='next slade' onClick={handleClickNext}>
                     <img src='./images/angle_right.png' width={30}></img>
                 </div>
             </div>
             <p className='count'>{currentCard.id}/{allWords.length}</p>
-
         </ div>
 
     )

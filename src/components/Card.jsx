@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import React from "react";
 
-function Card(item) {
-    const [base, setReversed] = useState(item.base || true);
+function Card(item, isShowTranslation, onShowTranslation) {
+
     const handleChange = () => {
-        setReversed(!base);
+        onShowTranslation(!isShowTranslation);
     }
 
     const btnRef = useRef(null);
@@ -15,7 +15,7 @@ function Card(item) {
         }
     }, []);
 
-    if (base === true) {
+    if (isShowTranslation === true) {
         return (
             <div className="card-item" onClick={handleChange}>
                 <div className="word">{item.word}</div>

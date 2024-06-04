@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Word from '../Listwords/ListWords';
 import ListTopics from "../ListTopic/ListTopics";
-import ListWord from "../Listwords/ListWords";
+import ListWords from "../Listwords/ListWords";
+import AddWord from '../AddWord/AddWord'
+import useLocalStorage from "../../hooks/useLocalStorage";
 import Form from "../Form/Form";
 
 function Home() {
@@ -78,47 +79,48 @@ function Home() {
             topic: 'работа'
         }
     ];
+    //состояние массива слов, по умолч  - пустое
+    const [learnWords, setLearnWords] = useLocalStorage("wordsList", allWords)
+    //состояние поля ввода задачи, по умолч  - пустое
+    const [inputValue, setInputValue] = useState("");
 
-    const [string, setString] = useState([]);
-
-    const handleChange = () => {
-
-        // setObj(event.target.id.value, event.target.word.value, event.target.transcription.value, event.target.topic.value, event.target.translation.value)
+    // //удаление слова
+    const deleteWord = (index) => {
+        const newLearnWords = [...learnWords];
+        newLearnWords.splice(index, 1);
+        setLearnWords(newLearnWords);
+        // localStorage.setItem("wordsList", JSON.stringify(newLearnWords))
     }
 
-    const handleClick = () => {
-        console.log('Mao');
-    }
-
-    const Word = () => {
-        const [obj, setObj] = useState({ allWords });
+    //добавить слово
+    const addWord = () => {
+        console.log("mao");
+        return (
+            <div>
+                <Form />
+            </div>
+        )
     }
 
     return (
         <main>
             <aside>
-
                 <div>
-                    <button type="button" id="add" className="add">+</button>
+                    <AddWord addWord={addWord} inputValue={inputValue} setInputValue={setInputValue} />
                     <h2>Слова для повторения</h2>
                     <div>
                         {
-                            allWords.map((item, index) => {
+                            learnWords.map((item, index) => {
                                 return (
                                     <>
-                                        <ListWord
+                                        <ListWords
                                             key={index}
                                             id={item.id}
                                             word={item.word}
                                             transcription={item.transcription}
                                             translation={item.translation}
                                             topic={item.topic}
-                                            onChange={handleChange}
-                                            onClick={handleClick}
                                         />
-                                        {/* <Form onSave={handleSave}
-                                            // onCheck={handleOpenModal} 
-                                            /> */}
                                     </>
                                 )
                             })

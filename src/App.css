@@ -46,15 +46,6 @@ h3 {
   font-size: 1rem;
 }
 
-.add {
-  background-color: rgb(255, 57, 186);
-  border-radius: 0 0 50% 50%;
-  width: 30px;
-  height: 30px;
-  font-size: xx-large;
-  border-style: none;
-}
-
 .cardOneBlock {
   display: flex;
   justify-content: center;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from './ListWords.module.css';
 import Form from "../Form/Form";
 
-function ListWord(props) {
+function ListWords(props) {
     const { id, word, transcription, translation, topic, onChange, onClick } = props;
 
     return (
@@ -25,4 +25,4 @@ function ListWord(props) {
     )
 };
 
-export default ListWord;
+export default ListWords;
