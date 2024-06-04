@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import style from './Slider.module.css';
 import Card from "../Card";
 
 function Slider() {
@@ -98,7 +97,6 @@ function Slider() {
     };
     //следующая карточка
     const handleClickNext = () => {
-        // console.log(allWords.length);
         setReversed(true);
         if (index < allWords.length - 1) {
             setIndex(index + 1)
@@ -111,7 +109,7 @@ function Slider() {
         < div >
             <div className='cardOneBlock'>
                 <div className='prew slade' onClick={handleClickPrew}>
-                    <img src='./images/angle_left.png' width={30}></img>
+                    <img src='./images/angle_left.png' width={30} alt="prew-arrow"></img>
                 </div>
                 <Card
                     id={currentCard.id}
@@ -123,7 +121,7 @@ function Slider() {
                     onShowTranslation={setReversed}
                 />
                 <div className='next slade' onClick={handleClickNext}>
-                    <img src='./images/angle_right.png' width={30}></img>
+                    <img src='./images/angle_right.png' width={30} alt="next-arrow"></img>
                 </div>
             </div>
             <p className='count'>{currentCard.id}/{allWords.length}</p>

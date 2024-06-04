@@ -61,7 +61,7 @@ h3 {
   width: 30vw;
   height: 250px;
   text-align: center;
-  padding: 30px 40px;
+  padding: 30px 2px;
   margin: 2rem;
 
 }
@@ -75,8 +75,8 @@ h3 {
   width: 30vw;
   height: 250px;
   text-align: center;
-  padding: 30px 40px;
-  margin: 3rem;
+  padding: 30px 2px;
+  margin: 2rem;
 }
 
 .center {
@@ -88,7 +88,7 @@ h3 {
 
 .word,
 .translation {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin: auto;
 }
 
