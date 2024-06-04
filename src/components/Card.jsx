@@ -1,8 +1,12 @@
 import React, { useRef, useEffect } from "react";
 
-function Card(item, isShowTranslation, onShowTranslation) {
+function Card(item) {
+
+    const isShowTranslation = item.isShowTranslation;
+    const onShowTranslation = item.onShowTranslation;
 
     const handleChange = () => {
+
         onShowTranslation(!isShowTranslation);
     }
 
@@ -13,6 +17,8 @@ function Card(item, isShowTranslation, onShowTranslation) {
             btnRef.current.focus();
         }
     }, []);
+
+    console.log(isShowTranslation);
 
     if (isShowTranslation === true) {
         return (

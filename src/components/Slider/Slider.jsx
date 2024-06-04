@@ -95,6 +95,7 @@ function Slider() {
             alert('ups!');
         }
     };
+
     //следующая карточка
     const handleClickNext = () => {
         setReversed(true);
@@ -109,7 +110,7 @@ function Slider() {
         < div >
             <div className='cardOneBlock'>
                 <div className='prew slade' onClick={handleClickPrew}>
-                    <img src='./images/angle_left.png' width={30} alt="prew-arrow"></img>
+                    <img src='./images/angle_left.png' width={30}></img>
                 </div>
                 <Card
                     id={currentCard.id}
@@ -121,10 +122,11 @@ function Slider() {
                     onShowTranslation={setReversed}
                 />
                 <div className='next slade' onClick={handleClickNext}>
-                    <img src='./images/angle_right.png' width={30} alt="next-arrow"></img>
+                    <img src='./images/angle_right.png' width={30}></img>
                 </div>
             </div>
             <p className='count'>{currentCard.id}/{allWords.length}</p>
+
         </ div>
 
     )
