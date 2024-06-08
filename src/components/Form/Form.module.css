@@ -7,15 +7,20 @@ input {
 }
 
 .point {
-    background-color: rgb(252, 249, 216);
+    background-color: rgb(255, 57, 186);
     border: 1px solid blue;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    margin-top: 10px;
 }
 
 .idNew {
     width: 2.2rem;
+}
+
+.display {
+    display: none;
 }

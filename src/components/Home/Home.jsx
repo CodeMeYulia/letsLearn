@@ -81,34 +81,37 @@ function Home() {
     ];
     //состояние массива слов, по умолч  - пустое
     const [learnWords, setLearnWords] = useLocalStorage("wordsList", allWords)
-    //состояние поля ввода задачи, по умолч  - пустое
-    const [inputValue, setInputValue] = useState("");
+
+    let newLearnWords = [...learnWords];
 
     // //удаление слова
-    const deleteWord = (index) => {
-        const newLearnWords = [...learnWords];
-        newLearnWords.splice(index, 1);
+    const handleDelWord = (id) => {
+        newLearnWords.splice(id, 1);
         setLearnWords(newLearnWords);
-        // localStorage.setItem("wordsList", JSON.stringify(newLearnWords))
+        localStorage.setItem("wordsList", JSON.stringify(newLearnWords))
     }
 
-    //добавить слово
-    const addWord = () => {
-        console.log("mao");
-        return (
-            <div>
-                <Form />
-            </div>
-        )
+    // let addForm = <div className="addForm">hru hru hru</div>
+    const [formVisible, setFormVisible] = useState(false)
+
+    //добавить слово(форму ввода)
+    const handleAddWord = () => {
+        setFormVisible(!formVisible)
+    }
+
+    let addForm = <div className="addForm" ></div >
+
+    if (formVisible) {
+        addForm = <div className="addForm"><Form /> </div >
     }
 
     return (
         <main>
             <aside>
                 <div>
-                    <AddWord addWord={addWord} inputValue={inputValue} setInputValue={setInputValue} />
+                    <AddWord handleAddWord={handleAddWord} />
                     <h2>Слова для повторения</h2>
-                    <div>
+                    <div className="words">
                         {
                             learnWords.map((item, index) => {
                                 return (
@@ -120,12 +123,15 @@ function Home() {
                                             transcription={item.transcription}
                                             translation={item.translation}
                                             topic={item.topic}
+                                            handleDelWord={handleDelWord}
                                         />
+                                        {/* <Form id={learnWords.length + 1} handleDelWord={handleDelWord}></Form> */}
                                     </>
                                 )
                             })
                         }
                     </div>
+                    {addForm}
                 </div>
             </aside>
             <ListTopics />

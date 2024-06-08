@@ -1,29 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './Form.module.css';
 
-function Form(props) {
-    const { id, word, transcription, translation, topic, onSubmit, inputValue, setInputValue } = props;
-    console.log(props);
-
+function Form({ handleDelWord, saveChanges }) {
 
     return (
-        <form className={style.point} >
-            <input type="num" value={id} className={style.idNew} />
-            <input type="text" value={word} />
-            <input type="text" value={transcription} />
-            <input type="text" value={translation} />
-            <input type="text" value={topic} />
+        <form className={style.point}>
+            <input type="text" placeholder="new word" required />
+            <input type="text" placeholder="transcription" required />
+            <input type="text" placeholder="translation" required />
+            <input type="text" placeholder="topic" required />
             <div>
-                <button type='submit' id="del" className="save"
-                // onSubmit={handleSubmit}
-                > сохр. </button>
-                <button type='button' id="esc" className="esc" >отм.</button>
+                <button type='submit' id="save" className="save" onSubmit={saveChanges}> сохр. </button>
+                <button type='button' id="esc" className="esc" onClick={handleDelWord}>отм.</button>
             </div>
         </form>
-        // <form>
-        //     <input type="text" name="" id="" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-
-        // </form>
     )
 }
 
