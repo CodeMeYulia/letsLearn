@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Form.module.css';
 
-function Form({ handleDelWord, saveChanges }) {
+function Form({ handleEsc, saveChanges }) {
 
     return (
         <form className={style.point}>
@@ -11,7 +11,7 @@ function Form({ handleDelWord, saveChanges }) {
             <input type="text" placeholder="topic" required />
             <div>
                 <button type='submit' id="save" className="save" onSubmit={saveChanges}> сохр. </button>
-                <button type='button' id="esc" className="esc" onClick={handleDelWord}>отм.</button>
+                <button type='button' id="esc" className="esc" onClick={handleEsc}>отм.</button>
             </div>
         </form>
     )

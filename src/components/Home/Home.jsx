@@ -102,7 +102,7 @@ function Home() {
     let addForm = <div className="addForm" ></div >
 
     if (formVisible) {
-        addForm = <div className="addForm"><Form /> </div >
+        addForm = <div className="addForm"><Form handleEsc={handleAddWord} /> </div >
     }
 
     return (
