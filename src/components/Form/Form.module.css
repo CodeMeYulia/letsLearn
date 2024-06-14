@@ -1,6 +1,6 @@
 input {
     padding: 7px;
-    width: 20%;
+    width: 90%;
     text-align: start;
     font-size: 1.2rem;
     font-style: italic;
@@ -14,7 +14,7 @@ input {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    margin-top: 10px;
+    margin: 10px 0 10px 0;
 }
 
 .idNew {

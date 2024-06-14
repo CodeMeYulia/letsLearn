@@ -159,3 +159,13 @@ h3 {
 .slade {
   font-size: 3rem;
 }
+
+.point {
+  background-color: aliceblue;
+  border: 1px solid blue;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}

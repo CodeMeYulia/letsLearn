@@ -91,7 +91,6 @@ function Home() {
         localStorage.setItem("wordsList", JSON.stringify(newLearnWords))
     }
 
-    // let addForm = <div className="addForm">hru hru hru</div>
     const [formVisible, setFormVisible] = useState(false)
 
     //добавить слово(форму ввода)
@@ -99,10 +98,34 @@ function Home() {
         setFormVisible(!formVisible)
     }
 
+    const [baseForm, setForm] = useState({
+        word: "",
+        transcription: "",
+        translation: "",
+        topic: ""
+    })
+
+    const handleChange = (e) => {
+        console.log(baseForm);
+        let value = e.target.value;
+        setForm({
+            ...baseForm,
+            [e.target.name]: value
+        })
+        console.log(baseForm);
+    }
+
+    //сохранить новое
+    const saveNewWord = (e) => {
+        e.preventDefault();
+        console.log('hru')
+        // setLearnWords([newLearnWords]);
+    }
+
     let addForm = <div className="addForm" ></div >
 
     if (formVisible) {
-        addForm = <div className="addForm"><Form handleEsc={handleAddWord} /> </div >
+        addForm = <div className="addForm"><Form handleEsc={handleAddWord} saveNewWord={saveNewWord} handleChange={handleChange} id={learnWords.length + 1} /> </div >
     }
 
     return (
@@ -125,7 +148,6 @@ function Home() {
                                             topic={item.topic}
                                             handleDelWord={handleDelWord}
                                         />
-                                        {/* <Form id={learnWords.length + 1} handleDelWord={handleDelWord}></Form> */}
                                     </>
                                 )
                             })
