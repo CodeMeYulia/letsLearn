@@ -84,7 +84,13 @@ function Home() {
 
     let newLearnWords = [...learnWords];
 
-    // //удаление слова
+    //редактирование
+    const fixWord = () => {
+        console.log('alarma!')
+    }
+
+
+    //удаление слова
     const handleDelWord = (id) => {
         newLearnWords.splice(id, 1);
         setLearnWords(newLearnWords);
@@ -98,35 +104,25 @@ function Home() {
         setFormVisible(!formVisible)
     }
 
-    const [baseForm, setForm] = useState({
-        word: "",
-        transcription: "",
-        translation: "",
-        topic: ""
-    })
-
-    const handleChange = (e) => {
-        console.log(baseForm);
-        let value = e.target.value;
-        setForm({
-            ...baseForm,
-            [e.target.name]: value
-        })
-        console.log(baseForm);
-    }
-
     //сохранить новое
     const saveNewWord = (e) => {
         e.preventDefault();
-        console.log('hru')
-        // setLearnWords([newLearnWords]);
+        console.log(learnWords);
+        const newWord = "hru"
+        // learnWords.push(newWord)
+        setLearnWords(newLearnWords, newWord);
     }
 
     let addForm = <div className="addForm" ></div >
 
     if (formVisible) {
-        addForm = <div className="addForm"><Form handleEsc={handleAddWord} saveNewWord={saveNewWord} handleChange={handleChange} id={learnWords.length + 1} /> </div >
+        addForm = <div className="addForm"><Form handleEsc={handleAddWord} saveNewWord={saveNewWord} id={learnWords.length + 1} handleDelWord={handleDelWord} /> </div >
     }
+
+    // //проверка на пустое
+    // const checkEmpty = () => {
+    //     console.log("mao")
+    // }
 
     return (
         <main>
@@ -141,12 +137,13 @@ function Home() {
                                     <>
                                         <ListWords
                                             key={index}
-                                            id={item.id}
+                                            id={index + 1}
                                             word={item.word}
                                             transcription={item.transcription}
                                             translation={item.translation}
                                             topic={item.topic}
                                             handleDelWord={handleDelWord}
+                                            fixWord={fixWord}
                                         />
                                     </>
                                 )

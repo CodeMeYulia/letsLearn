@@ -2,7 +2,9 @@ import React from "react";
 import style from './ListWords.module.css';
 
 function ListWords(props) {
-    const { id, word, transcription, translation, topic, onChange, onClick, handleDelWord } = props;
+    const { id, word, transcription, translation, topic, onChange, onClick, handleDelWord, fixWord } = props;
+
+
 
     return (
         <>
@@ -14,8 +16,8 @@ function ListWords(props) {
                     <div className="transltn">{translation}</div>
                     <div className="theme">/{topic}</div>
                     <div>
-                        <button id="del" className="del" onClick={handleDelWord}> X </button>
-                        <button id="red" className="red" onChange={onChange} onClick={onClick}>ред.</button>
+                        <button id="del" className="del"> X </button>
+                        <button id="red" className="red" onChange={onChange} onClick={fixWord}>ред.</button>
                     </div>
 
                 </li>
