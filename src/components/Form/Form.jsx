@@ -14,40 +14,57 @@ function Form({ handleEsc, saveNewWord, id, learnWords, handleDelWord, fixWord }
     const [isDisabled, setIsDisabled] = useState(true);
 
     //проверка на пустое и активация кнопки "сохранить" если все поля имеют ненулевое значение
-    const checkEmpty = () => {
-        console.log(setForm, typeof setForm);
-        if (baseForm.word === "" && baseForm.transcription === "" && baseForm.translation === "" && baseForm.topic === "") {
-            console.log('maodzedun');
-        } else { setIsDisabled(!isDisabled) }
-    }
-
 
 
     const handleChange = (e) => {
         let value = e.target.value;
-        console.log(value);
+        console.log("value: " + value);
+        console.log(e.target);
         setForm({
             ...baseForm,
             [e.target.name]: value
         })
+        console.log(baseForm);
         checkEmpty()
     }
 
+    const checkEmpty = () => {
+        let inputs = document.getElementsByClassName("inputs");
+        const userWords = [];
 
+        for (let i = 0; i < inputs.length; i++) {
+            console.log(inputs[i].value)
+            const userWord = inputs[i].value;
+
+            if (userWord !== "") {
+                userWords.push(userWord);
+                inputs[i].classList.remove("incorrect")
+            } else {
+                userWords.pop(userWord);
+                inputs[i].classList.add("incorrect")
+            }
+        }
+        console.log(userWords.length)
+        if (userWords.length === 4) {
+            setIsDisabled(!isDisabled)
+        } else {
+            setIsDisabled(isDisabled)
+        }
+    }
     return (
         <>
             <form className={style.point}>
-                <label htmlFor="word">
-                    <input type="text" className='inputs' placeholder="new word" required name="word" onChange={handleChange} value={baseForm.word} />
+                <label >
+                    <input type="text" className='inputs incorrect' placeholder="new word" required name="word" onChange={handleChange} value={baseForm.word} />
                 </label>
-                <label htmlFor="transcription">
-                    <input type="text" className='inputs' placeholder="transcription" name="transcription" onChange={handleChange} value={baseForm.transcription} />
+                <label >
+                    <input type="text" className='inputs incorrect' placeholder="transcription" name="transcription" onChange={handleChange} value={baseForm.transcription} />
                 </label>
-                <label htmlFor="translation">
-                    <input type="text" className='inputs' placeholder="translation" name="translation" onChange={handleChange} value={baseForm.translation} />
+                <label >
+                    <input type="text" className='inputs incorrect' placeholder="translation" name="translation" onChange={handleChange} value={baseForm.translation} />
                 </label>
-                <label htmlFor="">
-                    <input type="text" className='inputs' placeholder="topic" name="topic" onChange={handleChange} value={baseForm.topic} />
+                <label >
+                    <input type="text" className='inputs incorrect' placeholder="topic" name="topic" onChange={handleChange} value={baseForm.topic} />
                 </label>
                 <div>
                     <button type='submit' id="save" className="save" onSubmit={saveNewWord} disabled={isDisabled}> сохр. </button>
@@ -63,7 +80,8 @@ function Form({ handleEsc, saveNewWord, id, learnWords, handleDelWord, fixWord }
                 <div>
                     <button id="del" className="del" onClick={handleDelWord}> X </button>
                     <button id="red" className="red" onClick={fixWord}>ред.</button>
-                </div></li >
+                </div>
+            </li >
 
 
         </>

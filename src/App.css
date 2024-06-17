@@ -171,5 +171,5 @@ h3 {
 }
 
 .incorrect {
-  border: 2px solid red;
+  border: 2px dashed rgb(234, 250, 5);
 }
