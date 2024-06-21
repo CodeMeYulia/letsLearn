@@ -4,83 +4,88 @@ import ListWords from "../Listwords/ListWords";
 import AddWord from '../AddWord/AddWord'
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Form from "../Form/Form";
+import data from './allWords.json'
 
 function Home() {
 
-    const allWords = [
-        {
-            id: 1,
-            word: 'flower',
-            transcription: '[ˈflaʊə(r)]',
-            translation: 'цветок',
-            topic: 'природа'
-        },
-        {
-            id: 2,
-            word: 'grass',
-            transcription: '[ɡrɑːs]',
-            translation: 'трава, газон',
-            topic: 'природа'
-        },
-        {
-            id: 3,
-            word: 'bunch',
-            transcription: '[bʌntʃ]',
-            translation: 'пучок, связка',
-            topic: 'природа'
-        },
-        {
-            id: 4,
-            word: 'tree',
-            transcription: '[tri:]',
-            translation: 'дерево',
-            topic: 'природа'
-        },
-        {
-            id: 5,
-            word: 'birch',
-            transcription: '[bə:tʃ]',
-            translation: 'береза',
-            topic: 'природа'
-        },
-        {
-            id: 6,
-            word: 'pine',
-            transcription: '[paɪn]',
-            translation: 'сосна',
-            topic: 'nature'
-        },
-        {
-            id: 7,
-            word: 'glade',
-            transcription: '[ɡleɪd]',
-            translation: 'поляна',
-            topic: 'природа'
-        },
-        {
-            id: 8,
-            word: 'needles',
-            transcription: '[ɡleɪd]',
-            translation: 'хвоя',
-            topic: 'природа'
-        },
-        {
-            id: 9,
-            word: 'lawn',
-            transcription: '[lɔ:n]',
-            translation: 'газон',
-            topic: 'природа'
-        },
-        {
-            id: 10,
-            word: 'petal',
-            transcription: '[ˈpetl]',
-            translation: 'лепесток',
-            topic: 'работа'
-        }
-    ];
+    // const allWords = [
+    //     {
+    //         id: 1,
+    //         word: 'flower',
+    //         transcription: '[ˈflaʊə(r)]',
+    //         translation: 'цветок',
+    //         topic: 'природа'
+    //     },
+    //     {
+    //         id: 2,
+    //         word: 'grass',
+    //         transcription: '[ɡrɑːs]',
+    //         translation: 'трава, газон',
+    //         topic: 'природа'
+    //     },
+    //     {
+    //         id: 3,
+    //         word: 'bunch',
+    //         transcription: '[bʌntʃ]',
+    //         translation: 'пучок, связка',
+    //         topic: 'природа'
+    //     },
+    //     {
+    //         id: 4,
+    //         word: 'tree',
+    //         transcription: '[tri:]',
+    //         translation: 'дерево',
+    //         topic: 'природа'
+    //     },
+    //     {
+    //         id: 5,
+    //         word: 'birch',
+    //         transcription: '[bə:tʃ]',
+    //         translation: 'береза',
+    //         topic: 'природа'
+    //     },
+    //     {
+    //         id: 6,
+    //         word: 'pine',
+    //         transcription: '[paɪn]',
+    //         translation: 'сосна',
+    //         topic: 'nature'
+    //     },
+    //     {
+    //         id: 7,
+    //         word: 'glade',
+    //         transcription: '[ɡleɪd]',
+    //         translation: 'поляна',
+    //         topic: 'природа'
+    //     },
+    //     {
+    //         id: 8,
+    //         word: 'needles',
+    //         transcription: '[ɡleɪd]',
+    //         translation: 'хвоя',
+    //         topic: 'природа'
+    //     },
+    //     {
+    //         id: 9,
+    //         word: 'lawn',
+    //         transcription: '[lɔ:n]',
+    //         translation: 'газон',
+    //         topic: 'природа'
+    //     },
+    //     {
+    //         id: 10,
+    //         word: 'petal',
+    //         transcription: '[ˈpetl]',
+    //         translation: 'лепесток',
+    //         topic: 'работа'
+    //     }
+    // ];
+
     //состояние массива слов, по умолч  - пустое
-    const [learnWords, setLearnWords] = useLocalStorage("wordsList", allWords)
+    // const allWords = JSON.parse(data);
+    // console.log(data);
+
+    const [learnWords, setLearnWords] = useLocalStorage("wordsList", data)
 
     let newLearnWords = [...learnWords];
 
@@ -91,10 +96,11 @@ function Home() {
 
 
     //удаление слова
-    const handleDelWord = (id) => {
-        newLearnWords.splice(id, 1);
-        setLearnWords(newLearnWords);
-        localStorage.setItem("wordsList", JSON.stringify(newLearnWords))
+    const handleDelWord = (e) => {
+
+        console.log("hru")
+
+        // localStorage.setItem("wordsList", JSON.stringify(newLearnWords))
     }
 
     const [formVisible, setFormVisible] = useState(false)
@@ -105,24 +111,21 @@ function Home() {
     }
 
     //сохранить новое
-    const saveNewWord = (e) => {
-        e.preventDefault();
-        console.log(learnWords);
-        const newWord = "hru"
-        // learnWords.push(newWord)
-        setLearnWords(newLearnWords, newWord);
-    }
+    // const saveNewWord = (e) => {
+    //     e.preventDefault();
+    //     console.log("mao");
+    //     // console.log(learnWords);
+    //     // const newWord = "hru"
+    //     // // learnWords.push(newWord)
+    //     // setLearnWords(newLearnWords, newWord);
+    // }
 
     let addForm = <div className="addForm" ></div >
 
     if (formVisible) {
-        addForm = <div className="addForm"><Form handleEsc={handleAddWord} saveNewWord={saveNewWord} id={learnWords.length + 1} handleDelWord={handleDelWord} /> </div >
+        addForm = <div className="addForm"><Form handleEsc={handleAddWord} id={learnWords.length + 1}
+            handleDelWord={handleDelWord} data={data} /> </div >
     }
-
-    // //проверка на пустое
-    // const checkEmpty = () => {
-    //     console.log("mao")
-    // }
 
     return (
         <main>
