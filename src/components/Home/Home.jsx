@@ -5,6 +5,7 @@ import AddWord from '../AddWord/AddWord'
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Form from "../Form/Form";
 import data from './allWords.json'
+import Words from "../Words/Words";
 
 function Home() {
 
@@ -134,7 +135,8 @@ function Home() {
                     <AddWord handleAddWord={handleAddWord} />
                     <h2>Слова для повторения</h2>
                     <div className="words">
-                        {
+                        <Words />
+                        {/* {
                             learnWords.map((item, index) => {
                                 return (
                                     <>
@@ -151,12 +153,12 @@ function Home() {
                                     </>
                                 )
                             })
-                        }
+                        } */}
                     </div>
                     {addForm}
                 </div>
             </aside>
-            <ListTopics />
+            {/* <ListTopics /> */}
         </main>
     )
 }

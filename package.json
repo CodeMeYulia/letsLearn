@@ -37,14 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": {
-    "/search": {
-      "target": "<https://www.google.com>",
-      "changeOrigin": true
-    },
-    "/api": {
-      "target": "<http://itgirlschool.justmakeit.ru>",
-      "changeOrigin": true
-    }
-  }
+  "proxy": "http://itgirlschool.justmakeit.ru"
 }
