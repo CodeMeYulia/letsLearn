@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from "react";
 
 export default function Words() {
-    let [words, setWords] = useState([]);
+    const [words, setWords] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('/api/words')
             .then((response) => response.json())
-            .then((response) => setWords(words = response))
+            .then((response) => {
+                setWords(response)
+                setLoading(false) //выключ индикатор загрузки
+            })
     }, []);
 
     return (
-        <ol>
-            {
-                words.map(word => {
-                    return <li key={word.id}>
-                        {word.english} - {word.russian}
-                    </li>
-                })
-            }
-        </ol>
+        <div>
+            {loading ? (<p>Loading...</p>) : (
+                <ol>
+                    {
+                        words.map(word => {
+                            return <li key={word.id}>
+                                {word.english} - {word.russian}
+                            </li>
+                        })
+                    }
+                </ol>
+            )}
+        </div>
     )
 }
