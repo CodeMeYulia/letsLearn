@@ -1,10 +1,16 @@
-import React, { useState } from "react";
-import style from './AddWord.module.css'
+import React, { useState, useContext } from "react";
+import style from './AddWord.module.css';
+import AllWordsContext from "../../context/AllWordsContext";
 
-function AddWord({ handleAddWord }) {
+
+function AddWord() {
+
+
 
     return (
-        <button type="click" className={style.add} onClick={handleAddWord} >+</button>
+        <button type="click" className={style.add} >+</button>
+        // <Form onSubmitInWords={addWord} />
+
     )
 }
 

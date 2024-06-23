@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import AllWordsContext from "../../context/AllWordsContext";
 import ListTopics from "../ListTopic/ListTopics";
 import ListWords from "../Listwords/ListWords";
-import AddWord from '../AddWord/AddWord'
-import useLocalStorage from "../../hooks/useLocalStorage";
-import Form from "../Form/Form";
-import data from './allWords.json'
-import Words from "../Words/Words";
+import AddWord from "../AddWord/AddWord";
 
 function Home() {
 
@@ -86,30 +83,15 @@ function Home() {
     // const allWords = JSON.parse(data);
     // console.log(data);
 
-    const [learnWords, setLearnWords] = useLocalStorage("wordsList", data)
-
-    let newLearnWords = [...learnWords];
-
-    //редактирование
-    const fixWord = () => {
-        console.log('alarma!')
-    }
 
 
-    //удаление слова
-    const handleDelWord = (e) => {
 
-        console.log("hru")
-
-        // localStorage.setItem("wordsList", JSON.stringify(newLearnWords))
-    }
-
-    const [formVisible, setFormVisible] = useState(false)
+    // const [formVisible, setFormVisible] = useState(false)
 
     //добавить слово(форму ввода)
-    const handleAddWord = () => {
-        setFormVisible(!formVisible)
-    }
+    // const handleAddWord = () => {
+    //     setFormVisible(!formVisible)
+    // }
 
     //сохранить новое
     // const saveNewWord = (e) => {
@@ -121,44 +103,29 @@ function Home() {
     //     // setLearnWords(newLearnWords, newWord);
     // }
 
-    let addForm = <div className="addForm" ></div >
+    // let addForm = <div className="addForm" ></div >
 
-    if (formVisible) {
-        addForm = <div className="addForm"><Form handleEsc={handleAddWord} id={learnWords.length + 1}
-            handleDelWord={handleDelWord} data={data} /> </div >
-    }
+    // if (formVisible) {
+    //     addForm = <div className="addForm"><Form handleEsc={handleAddWord} id={learnWords.length + 1}
+    //         handleDelWord={handleDelWord} data={data} /> </div >
+    // }
+    // const { words, fetchWords, addWord, fixWord, delWord } = useContext(AllWordsContext);
+    const { words, fetchWords, addWord, fixWord, delWord, loading } = useContext(AllWordsContext);
+
 
     return (
         <main>
             <aside>
                 <div>
-                    <AddWord handleAddWord={handleAddWord} />
+                    <AddWord />
                     <h2>Слова для повторения</h2>
                     <div className="words">
-                        <Words />
-                        {/* {
-                            learnWords.map((item, index) => {
-                                return (
-                                    <>
-                                        <ListWords
-                                            key={index}
-                                            id={index + 1}
-                                            word={item.word}
-                                            transcription={item.transcription}
-                                            translation={item.translation}
-                                            topic={item.topic}
-                                            handleDelWord={handleDelWord}
-                                            fixWord={fixWord}
-                                        />
-                                    </>
-                                )
-                            })
-                        } */}
+                        <ListWords />
                     </div>
-                    {addForm}
+                    {/* {addForm} */}
                 </div>
             </aside>
-            {/* <ListTopics /> */}
+            <ListTopics />
         </main>
     )
 }
