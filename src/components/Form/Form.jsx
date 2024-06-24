@@ -4,9 +4,9 @@ import AllWordsContext from "../../context/AllWordsContext";
 
 
 const Form = () => {
-    const { addWord, formVisible } = useContext(AllWordsContext);
+    const { addWord, formVisible, setFormVisible } = useContext(AllWordsContext);
+    const [baseForm, setForm] = useState("");
 
-    const { setFormVisible } = useContext(AllWordsContext);
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
     const [russian, setRussian] = useState("");
@@ -16,7 +16,6 @@ const Form = () => {
         addWord(myWord)
         setFormVisible(!formVisible);
     }
-
 
     const handleEsc = () => {
         setFormVisible(false);
@@ -33,71 +32,51 @@ const Form = () => {
         setTopic("")
     }
 
-    // const [baseForm, setForm] = useState({
-    //     word: "",
-    //     transcription: "",
-    //     translation: "",
-    //     topic: ""
-    // })
+    // //задаем по умолчанию кнопку save неактивной
+    const [isDisabled, setIsDisabled] = useState(true);
 
-    // //задаем по умолчанию кнопку неактивной
-    // const [isDisabled, setIsDisabled] = useState(true);
+    //запуск проверки после изменений формы
+    const checkEmpty = () => {
+        let inputs = document.getElementsByClassName("inputs");
+        let empty = 4;
 
-    // //запуск проверки после изменений
-    // const handleChange = (e) => {
-    //     let value = e.target.value;
-    //     setForm({
-    //         ...baseForm,
-    //         [e.target.name]: value
-    //     })
-    //     // console.log(baseForm);
-    //     //функция проверки на пустую строку в инпутах
-    //     checkEmpty()
-    // }
+        for (let i = 0; i < inputs.length; i++) {
+            const userWord = inputs[i].value;
 
-    // const checkEmpty = () => {
-    //     let inputs = document.getElementsByClassName("inputs");
-    //     let empty = 4;
+            //обводка пустого поля ввода
+            if (userWord !== "") {
+                inputs[i].classList.remove("incorrect");
+                empty -= 1;
+            } else {
+                inputs[i].classList.add("incorrect")
+            }
 
-    //     for (let i = 0; i < inputs.length; i++) {
-    //         // console.log(inputs[i].value);
-    //         const userWord = inputs[i].value;
-
-    //         //обводка пустого поля ввода
-    //         if (userWord !== "") {
-    //             inputs[i].classList.remove("incorrect");
-    //             empty -= 1;
-    //         } else {
-    //             inputs[i].classList.add("incorrect")
-    //         }
-
-    //         //блокировка кнопки сохранить, если есть пустые поля инпутов
-    //         if (empty === 0) {
-    //             setIsDisabled(!isDisabled);
-    //         }
-    //     }
-    // }
+            //блокировка кнопки save, если есть пустые поля инпутов
+            if (empty === 0) {
+                setIsDisabled(!isDisabled);
+            }
+        }
+    }
 
     return (
         <>
-            <form className={style.point} onSubmit={handleSubmit}>
+            <form className={style.point} onSubmit={handleSubmit} onChange={checkEmpty}>
                 <label >
-                    <input type="text" className='inputs incorrect' placeholder="new word" required name="english" onChange={(e) => setEnglish(e.target.value)} value={english} />
+                    <input type="text" className='inputs' placeholder="new word" required name="english"
+                        onChange={(e) => setEnglish(e.target.value)} value={english} />
                 </label>
                 <label >
-                    <input type="text" className='inputs incorrect' placeholder="transcription" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} />
+                    <input type="text" className='inputs' placeholder="transcription" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} />
                 </label>
                 <label >
-                    <input type="text" className='inputs incorrect' placeholder="translation" name="translation" onChange={(e) => setRussian(e.target.value)} value={russian} />
+                    <input type="text" className='inputs' placeholder="translation" name="translation" onChange={(e) => setRussian(e.target.value)} value={russian} />
                 </label>
                 <label >
-                    <input type="text" className='inputs incorrect' placeholder="topic" name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} />
+                    <input type="text" className='inputs' placeholder="topic" name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} />
                 </label>
                 <div>
-                    {/* <button type='submit' id="save" className="save" disabled={isDisabled}> сохр. </button> */}
-
-                    <button type='submit' id="save" className="save" > сохр. </button>
-                    <button type='button' id="esc" className="esc" onClick={handleEsc}>отм.</button>
+                    <button type='submit' id="save" className="save" disabled={isDisabled}> сохр. </button>
+                    <button type='button' id="esc" className="esc" onClick={handleEsc} >отм.</button>
                 </div>
             </form>
 

@@ -83,7 +83,6 @@ function App() {
 
   //добавить форму для ввода нового слова
   const addForm = () => {
-    console.log("mao");
     setFormVisible(true);
   }
 
