@@ -4,8 +4,8 @@ const AllWordsContext = createContext({
     words: [],
     fetchWords: () => { },
     addWord: () => { },
-    updateWord: () => { },
-    deleteWord: () => { },
+    fixWord: () => { },
+    deleWord: () => { },
 
 });
 

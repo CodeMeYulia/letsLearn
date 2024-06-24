@@ -3,14 +3,20 @@ import style from './Form.module.css';
 import AllWordsContext from "../../context/AllWordsContext";
 
 
-const Form = ({ onSubmitInWords }) => {
-    const { words, fetchWords, addWord, loading, setFormVisible } = useContext(AllWordsContext);
-    const handleAddWord = (myWord) => { addWord(myWord) };
+const Form = () => {
+    const { addWord, formVisible } = useContext(AllWordsContext);
 
+    const { setFormVisible } = useContext(AllWordsContext);
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
     const [russian, setRussian] = useState("");
     const [topic, setTopic] = useState("");
+
+    const handleAddWord = (myWord) => {
+        addWord(myWord)
+        setFormVisible(!formVisible);
+    }
+
 
     const handleEsc = () => {
         setFormVisible(false);
@@ -20,7 +26,7 @@ const Form = ({ onSubmitInWords }) => {
         e.preventDefault();
         const myWord = { english, transcription, russian, topic };
         console.log(myWord);
-        onSubmitInWords(myWord);
+        handleAddWord(myWord);
         setEnglish("");
         setTranscription("");
         setRussian("")
@@ -74,7 +80,7 @@ const Form = ({ onSubmitInWords }) => {
 
     return (
         <>
-            <form className={style.point}>
+            <form className={style.point} onSubmit={handleSubmit}>
                 <label >
                     <input type="text" className='inputs incorrect' placeholder="new word" required name="english" onChange={(e) => setEnglish(e.target.value)} value={english} />
                 </label>
@@ -90,7 +96,7 @@ const Form = ({ onSubmitInWords }) => {
                 <div>
                     {/* <button type='submit' id="save" className="save" disabled={isDisabled}> сохр. </button> */}
 
-                    <button type='submit' id="save" className="save" onSubmit={handleSubmit}> сохр. </button>
+                    <button type='submit' id="save" className="save" > сохр. </button>
                     <button type='button' id="esc" className="esc" onClick={handleEsc}>отм.</button>
                 </div>
             </form>

@@ -1,17 +1,19 @@
 import React, { useEffect, useContext } from "react";
 import style from "./ListWords.module.css"
 import AllWordsContext from "../../context/AllWordsContext";
-import Form from "../Form/Form";
 
 
 function ListWords() {
-    const { words, fetchWords, addWord, fixWord, delWord, loading } = useContext(AllWordsContext);
+    const { words, fetchWords, fixWord, delWord, loading } = useContext(AllWordsContext);
 
     useEffect(() => {
         fetchWords();
     }, []);
 
-    const handleFixWord = (fixedWord) => { fixWord(fixedWord) };
+    const handleFixWord = (fixedWord) => {
+        console.log(fixedWord);
+        fixWord(fixedWord)
+    };
     const handleDelWord = (id) => { delWord(id) };
 
     return (

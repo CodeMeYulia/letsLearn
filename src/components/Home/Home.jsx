@@ -5,8 +5,7 @@ import ListWords from "../Listwords/ListWords";
 import AddWord from "../AddWord/AddWord";
 
 function Home() {
-    const { words, fetchWords, fixWord, delWord, loading, myForm, formVisible, addForm } = useContext(AllWordsContext);
-
+    const { myForm } = useContext(AllWordsContext);
 
     // const allWords = [
     //     {
@@ -81,46 +80,16 @@ function Home() {
     //     }
     // ];
 
-    //состояние массива слов, по умолч  - пустое
-    // const allWords = JSON.parse(data);
-    // console.log(data);
-
-
-
-
-    // const [formVisible, setFormVisible] = useState(false)
-
-    //добавить слово(форму ввода)
-    // const handleAddWord = () => {
-    //     setFormVisible(!formVisible)
-    // }
-
-    //сохранить новое
-    // const saveNewWord = (e) => {
-    //     e.preventDefault();
-    //     console.log("mao");
-    //     // console.log(learnWords);
-    //     // const newWord = "hru"
-    //     // // learnWords.push(newWord)
-    //     // setLearnWords(newLearnWords, newWord);
-    // }
 
     // let addForm = <div className="addForm" ></div >
 
-    // if (formVisible) {
-    //     addForm = <div className="addForm"><Form handleEsc={handleAddWord} id={learnWords.length + 1}
-    //         handleDelWord={handleDelWord} data={data} /> </div >
-    // }
-    // const { words, fetchWords, addWord, fixWord, delWord } = useContext(AllWordsContext);
     return (
         <main>
             <aside>
                 <div>
                     <AddWord />
                     <h2>Слова для повторения</h2>
-                    {/* <div className="words"> */}
                     <ListWords />
-                    {/* </div> */}
                     {myForm}
                 </div>
             </aside>

@@ -17,21 +17,21 @@ function App() {
   const [error, setError] = useState(null);
   //отображение формы по клику на плюсе
 
-
   // const baseUrl = "http://itgirlschool.justmakeit.ru";
 
-  const fetchWords = () => {
-    fetch(`./api/words`)
+  const fetchWords = async () => {
+    await fetch(`./api/words`)
       .then(response => {
         if (response.ok) {
           //статус 200
-          return response.json();
+          const data = response.json();
+          return data;
         } else {
           throw new Error('Ups...Something went wrong');
         }
       })
-      .then((response) => {
-        setWords(response)
+      .then((data) => {
+        setWords(data)
         setLoading(false)
       })
       .catch(error => setError(error))
@@ -51,6 +51,7 @@ function App() {
 
   //редактирование
   const fixWord = async (fixedWord) => {
+    console.log('mao');
     const response = await fetch(`/api/words/${fixedWord.id}/update`, {
       method: "POST",
       headers: {
@@ -59,6 +60,7 @@ function App() {
       body: JSON.stringify(fixedWord)
     });
     const data = await response.json();
+    console.log(data);
     setWords(words.map((word) => (word.id === fixedWord.id ? data : word)))
   };
 
@@ -75,6 +77,8 @@ function App() {
   if (formVisible) {
     myForm = <div className="">
       <Form /> </div >
+  } else {
+    myForm = <></>
   }
 
   //добавить форму для ввода нового слова
@@ -88,15 +92,15 @@ function App() {
       value={{
         words: words,
         fetchWords: fetchWords,
-        addWord,
         fixWord,
         delWord,
         loading,
         error,
-        // formVisible,
-        setFormVisible,
         myForm: myForm,
-        addForm
+        addForm,
+        setFormVisible,
+        formVisible: formVisible,
+        addWord
       }}
     >
       <Router>
