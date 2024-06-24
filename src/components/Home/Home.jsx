@@ -5,6 +5,8 @@ import ListWords from "../Listwords/ListWords";
 import AddWord from "../AddWord/AddWord";
 
 function Home() {
+    const { words, fetchWords, fixWord, delWord, loading, myForm, formVisible, addForm } = useContext(AllWordsContext);
+
 
     // const allWords = [
     //     {
@@ -110,19 +112,16 @@ function Home() {
     //         handleDelWord={handleDelWord} data={data} /> </div >
     // }
     // const { words, fetchWords, addWord, fixWord, delWord } = useContext(AllWordsContext);
-    const { words, fetchWords, addWord, fixWord, delWord, loading } = useContext(AllWordsContext);
-
-
     return (
         <main>
             <aside>
                 <div>
                     <AddWord />
                     <h2>Слова для повторения</h2>
-                    <div className="words">
-                        <ListWords />
-                    </div>
-                    {/* {addForm} */}
+                    {/* <div className="words"> */}
+                    <ListWords />
+                    {/* </div> */}
+                    {myForm}
                 </div>
             </aside>
             <ListTopics />

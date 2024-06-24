@@ -5,7 +5,8 @@ import Header from './components/Header/Header';
 import Home from "./components/Home/Home";
 import About from './components/About/About';
 import Learn from './components/Learn/Learn';
-import AllWordsContext from './context/AllWordsContext'
+import AllWordsContext from './context/AllWordsContext';
+import Form from "./components/Form/Form";
 
 function App() {
 
@@ -14,8 +15,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   //состояние ошибки
   const [error, setError] = useState(null);
-  // const baseUrl = "http://itgirlschool.justmakeit.ru";
+  //отображение формы по клику на плюсе
 
+
+  // const baseUrl = "http://itgirlschool.justmakeit.ru";
 
   const fetchWords = () => {
     fetch(`./api/words`)
@@ -67,6 +70,19 @@ function App() {
     setWords(words.filter((word) => word.id !== id))
   };
 
+  const [formVisible, setFormVisible] = useState(false);
+  let myForm;
+  if (formVisible) {
+    myForm = <div className="">
+      <Form /> </div >
+  }
+
+  //добавить форму для ввода нового слова
+  const addForm = () => {
+    console.log("mao");
+    setFormVisible(true);
+  }
+
   return (
     <AllWordsContext.Provider
       value={{
@@ -76,19 +92,21 @@ function App() {
         fixWord,
         delWord,
         loading,
-        error
+        error,
+        // formVisible,
+        setFormVisible,
+        myForm: myForm,
+        addForm
       }}
     >
       <Router>
         <div className="App">
-
           <Header />
           <Routes>
             <Route path='/about' element={<About />} />
             <Route path='/' element={<Home />} />
             <Route path='/letslearn' element={<Learn />} />
           </Routes>
-
           <footer>
             <div className='footer'>
               <div>ItGirlSchool</div>
@@ -96,7 +114,6 @@ function App() {
               <div>@codemeyulia</div>
             </div>
           </footer>
-
         </div>
       </Router>
     </AllWordsContext.Provider>

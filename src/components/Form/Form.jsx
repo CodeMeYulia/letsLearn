@@ -4,7 +4,7 @@ import AllWordsContext from "../../context/AllWordsContext";
 
 
 const Form = ({ onSubmitInWords }) => {
-    const { words, fetchWords, addWord, fixWord, delWord, loading } = useContext(AllWordsContext);
+    const { words, fetchWords, addWord, loading, setFormVisible } = useContext(AllWordsContext);
     const handleAddWord = (myWord) => { addWord(myWord) };
 
     const [english, setEnglish] = useState("");
@@ -12,6 +12,9 @@ const Form = ({ onSubmitInWords }) => {
     const [russian, setRussian] = useState("");
     const [topic, setTopic] = useState("");
 
+    const handleEsc = () => {
+        setFormVisible(false);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -69,38 +72,9 @@ const Form = ({ onSubmitInWords }) => {
     //     }
     // }
 
-
-    // const saveNewWord = (e) => {
-    //     e.preventDefault();
-    //     const word = {
-    //         id: id,
-    //         word: baseForm.word,
-    //         transcription: baseForm.transcription,
-    //         translation: baseForm.translation,
-    //         topic: baseForm.topic
-    //     }
-    //     console.log(word, typeof word);
-    //     console.log(data, typeof data);
-
-    //     data.push(word);
-    //     handleEsc();
-    //     localStorage.setItem("wordsList", JSON.stringify(data))
-    //     return <li className="point">
-    //         <div >{id}</div>
-    //         <div className="baseWord">{baseForm.word}</div>
-    //         <div className="transcrtn">{baseForm.transcription}</div>
-    //         <div className="transltn">{baseForm.translation}</div>
-    //         <div className="theme">/{baseForm.topic}</div>
-    //         <div>
-    //             <button id="del" className="del" onClick={handleDelWord}> X </button>
-    //             <button id="red" className="red" onClick={fixWord}>ред.</button>
-    //         </div>
-    //     </li >
-    // }
-
     return (
         <>
-            <form onSubmit={handleSubmit} className={style.Form}>
+            <form className={style.point}>
                 <label >
                     <input type="text" className='inputs incorrect' placeholder="new word" required name="english" onChange={(e) => setEnglish(e.target.value)} value={english} />
                 </label>
@@ -116,8 +90,8 @@ const Form = ({ onSubmitInWords }) => {
                 <div>
                     {/* <button type='submit' id="save" className="save" disabled={isDisabled}> сохр. </button> */}
 
-                    <button type='submit' id="save" className="save" handleSubmit={handleSubmit}> сохр. </button>
-                    {/* <button type='button' id="esc" className="esc" onClick={handleEsc}>отм.</button> */}
+                    <button type='submit' id="save" className="save" onSubmit={handleSubmit}> сохр. </button>
+                    <button type='button' id="esc" className="esc" onClick={handleEsc}>отм.</button>
                 </div>
             </form>
 
