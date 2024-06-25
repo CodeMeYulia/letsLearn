@@ -114,7 +114,7 @@ function Slider() {
         < div >
             <div className='cardOneBlock'>
                 <div className='prew slade' onClick={handleClickPrew}>
-                    <img src='./images/angle_left.png' width={30}></img>
+                    <img src='./images/angle_left.png' width={30} alt="arrow_left"></img>
                 </div>
                 <Card
                     // id={currentCard.id}
@@ -126,7 +126,7 @@ function Slider() {
                     onShowTranslation={setReversed}
                 />
                 <div className='next slade' onClick={handleClickNext}>
-                    <img src='./images/angle_right.png' width={30}></img>
+                    <img src='./images/angle_right.png' width={30} alt="arrow_right"></img>
                 </div>
             </div>
             <p className='count'>{index + 1} /{words.length}</p>

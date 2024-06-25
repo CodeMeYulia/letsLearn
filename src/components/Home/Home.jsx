@@ -80,9 +80,6 @@ function Home() {
     //     }
     // ];
 
-
-    // let addForm = <div className="addForm" ></div >
-
     return (
         <main>
             <aside>

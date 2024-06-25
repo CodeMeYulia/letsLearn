@@ -18,7 +18,6 @@ function ListTopics(allWords) {
 
     return (
         <div className={style.container}>
-            <h2>Выбрать тему для повторения</h2>
             {/* <div className={style.card__body}></div> */}
             <div className={style.topics}>
                 <CardTopic topic="География" />

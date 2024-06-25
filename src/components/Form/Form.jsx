@@ -5,7 +5,7 @@ import AllWordsContext from "../../context/AllWordsContext";
 
 const Form = () => {
     const { addWord, formVisible, setFormVisible } = useContext(AllWordsContext);
-    const [baseForm, setForm] = useState("");
+    // const [baseForm, setForm] = useState("");
 
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
