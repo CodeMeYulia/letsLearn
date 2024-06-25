@@ -23,7 +23,7 @@ function Card(item) {
     if (isShowTranslation === true) {
         return (
             <div className="card-item" onClick={handleChange}>
-                <div className="word">{item.word}</div>
+                <div className="word">{item.english}</div>
                 <div className="transcription" >{item.transcription}</div>
                 <button className="reverse" ref={btnRef} >перевод</button>
             </div>
@@ -32,8 +32,8 @@ function Card(item) {
         //отображаем карточку с переводом и картинкой
         return (
             <div className="card-item2" onClick={handleChange}>
-                <div className="translation">{item.translation}</div>
-                <div className="word2">{item.word}</div>
+                <div className="translation">{item.russian}</div>
+                <div className="word2">{item.english}</div>
             </div>
         );
     }

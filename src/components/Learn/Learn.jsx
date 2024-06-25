@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import style from './Learn.module.css';
-import Slider from '../Slider/Slider'
+import Slider from '../Slider/Slider';
 
 function Learn() {
     const [learned, setLearned] = useState(0);
@@ -23,9 +22,9 @@ function Learn() {
         <div>
             <Slider />
             <div className='result-block'>
-                <button className='res' onClick={handleLearned}><img src='./images/heart.png' width='18px' />выучено {learned} </button>
-                <button className='res' onClick={handleRepeate}><img src='./images/refresh.png' width='18px' />повторить {repeate}</button>
-                <button className='res' onClick={handleCountHard}><img src='./images/cross-circle.png' width='18px' />сложные {hard}</button>
+                <button className='res' onClick={handleLearned}><img src='./images/heart.png' width='18px' alt="heart" />выучено {learned} </button>
+                <button className='res' onClick={handleRepeate}><img src='./images/refresh.png' width='18px' alt="cicle" />повторить {repeate}</button>
+                <button className='res' onClick={handleCountHard}><img src='./images/cross-circle.png' width='18px' alt="cross" />сложные {hard}</button>
             </div>
         </div>
 

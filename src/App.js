@@ -17,8 +17,6 @@ function App() {
   const [error, setError] = useState(null);
   //отображение формы по клику на плюсе
 
-  // const baseUrl = "http://itgirlschool.justmakeit.ru";
-
   const fetchWords = async () => {
     await fetch(`./api/words`)
       .then(response => {
@@ -51,7 +49,6 @@ function App() {
 
   //редактирование
   const fixWord = async (fixedWord) => {
-    console.log('mao');
     const response = await fetch(`/api/words/${fixedWord.id}/update`, {
       method: "POST",
       headers: {

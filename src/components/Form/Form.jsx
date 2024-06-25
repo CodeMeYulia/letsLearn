@@ -79,11 +79,7 @@ const Form = () => {
                     <button type='button' id="esc" className="esc" onClick={handleEsc} >отм.</button>
                 </div>
             </form>
-
-
-
         </>
-
     )
 }
 
