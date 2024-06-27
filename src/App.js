@@ -50,17 +50,35 @@ function App() {
 
   //обновление списка после внесения изменений
   const fixWord = async (fixedWord) => {
-    console.log(fixWord);
-    const response = await fetch(`/api/words/${fixedWord.id}/update`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(fixedWord)
-    });
-    const data = await response.json();
-    console.log(data);
-    setWords(words.map((word) => (word.id === fixedWord.id ? data : word)))
+    console.log(JSON.stringify(fixedWord));
+    try {
+      const response = await fetch(`/api/words/${fixedWord.id}/update`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache"
+        },
+        body: JSON.stringify(fixedWord)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      if (data && data.id) {
+        //обновляем состояние
+        setWords(words.map((word) => (word.id === fixedWord.id ? data : word)))
+      } else {
+        throw new Error('Server did not return updates word object')
+      }
+
+    }
+    catch (error) {
+      console.error("Ошибка при обновлении слова:", error)
+    }
   };
 
   // удаление слова
@@ -88,15 +106,15 @@ function App() {
         words: words,
         setWords,
         fetchWords: fetchWords,
+        addForm,
+        addWord,
         fixWord,
         delWord,
         loading,
         error,
         myForm: myForm,
-        addForm,
         setFormVisible,
         formVisible: formVisible,
-        addWord,
       }}
     >
       <Router>

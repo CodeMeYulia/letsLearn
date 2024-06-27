@@ -5,17 +5,11 @@ import AllWordsContext from "../../context/AllWordsContext";
 
 const Form = () => {
     const { addWord, formVisible, setFormVisible, } = useContext(AllWordsContext);
-    // const [baseForm, setForm] = useState("");
 
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
     const [russian, setRussian] = useState("");
     const [topic, setTopic] = useState("");
-
-    const handleAddWord = (myWord) => {
-        addWord(myWord)
-        setFormVisible(!formVisible);
-    }
 
     const handleEsc = () => {
         setFormVisible(false);
@@ -24,7 +18,7 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const myWord = { english, transcription, russian, topic };
-        console.log(myWord);
+        // console.log(myWord);
         handleAddWord(myWord);
         setEnglish("");
         setTranscription("");
@@ -32,7 +26,12 @@ const Form = () => {
         setTopic("")
     }
 
-    //задаем по умолчанию кнопку save неактивной
+    const handleAddWord = (myWord) => {
+        addWord(myWord)
+        setFormVisible(!formVisible);
+    }
+
+    //задаем по умолчанию кнопку save в формах неактивной
     const [isDisabled, setIsDisabled] = useState(true);
 
     //запуск проверки после изменений формы
@@ -47,7 +46,6 @@ const Form = () => {
             if (userWord !== "") {
                 inputs[i].classList.remove("incorrect");
                 empty -= 1;
-                console.log(empty);
             } else {
                 inputs[i].classList.add("incorrect")
             }
