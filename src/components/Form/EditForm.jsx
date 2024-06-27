@@ -3,36 +3,37 @@ import style from './Form.module.css';
 import AllWordsContext from "../../context/AllWordsContext";
 
 
-const Form = () => {
-    const { addWord, formVisible, setFormVisible, } = useContext(AllWordsContext);
-    // const [baseForm, setForm] = useState("");
+const EditForm = () => {
+    const { addWord, pushBtn, setPushBtn, fixedWord } = useContext(AllWordsContext);
+
+    console.log(fixedWord, typeof fixedWord, fixedWord.english);
 
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
     const [russian, setRussian] = useState("");
     const [topic, setTopic] = useState("");
 
-    const handleAddWord = (myWord) => {
-        addWord(myWord)
-        setFormVisible(!formVisible);
+    const handleAddWord = (fixedWord) => {
+        addWord(fixedWord)
+        setPushBtn(!pushBtn);
     }
 
     const handleEsc = () => {
-        setFormVisible(false);
+        setPushBtn(false);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const myWord = { english, transcription, russian, topic };
-        console.log(myWord);
-        handleAddWord(myWord);
+        const fixedWord = { english, transcription, russian, topic };
+        console.log(fixedWord);
+        handleAddWord(fixedWord);
         setEnglish("");
         setTranscription("");
         setRussian("")
         setTopic("")
     }
 
-    //задаем по умолчанию кнопку save неактивной
+    // //задаем по умолчанию кнопку save неактивной
     const [isDisabled, setIsDisabled] = useState(true);
 
     //запуск проверки после изменений формы
@@ -47,16 +48,13 @@ const Form = () => {
             if (userWord !== "") {
                 inputs[i].classList.remove("incorrect");
                 empty -= 1;
-                console.log(empty);
             } else {
                 inputs[i].classList.add("incorrect")
             }
 
             //блокировка кнопки save, если есть пустые поля инпутов
             if (empty === 0) {
-                setIsDisabled(false);
-            } else {
-                setIsDisabled(true)
+                setIsDisabled(!isDisabled);
             }
         }
     }
@@ -65,17 +63,17 @@ const Form = () => {
         <>
             <form className={style.point} onSubmit={handleSubmit} onChange={checkEmpty}>
                 <label >
-                    <input type="text" className='inputs' placeholder="new word" required name="english"
+                    <input type="text" className='inputs' placeholder={fixedWord.english} required name="english"
                         onChange={(e) => setEnglish(e.target.value)} value={english} />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="transcription" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} />
+                    <input type="text" className='inputs' placeholder={fixedWord.transcription} name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="translation" name="translation" onChange={(e) => setRussian(e.target.value)} value={russian} />
+                    <input type="text" className='inputs' placeholder={fixedWord.russian} name="translation" onChange={(e) => setRussian(e.target.value)} value={russian} />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="topic" name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} />
+                    <input type="text" className='inputs' placeholder={fixedWord.topic} name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} />
                 </label>
                 <div>
                     <button type='submit' id="save" className="save" disabled={isDisabled}> сохр. </button>
@@ -86,4 +84,4 @@ const Form = () => {
     )
 }
 
-export default Form;
+export default EditForm;

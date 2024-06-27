@@ -7,15 +7,16 @@ import About from './components/About/About';
 import Learn from './components/Learn/Learn';
 import AllWordsContext from './context/AllWordsContext';
 import Form from "./components/Form/Form";
+// import EditForm from "./components/Form/EditForm";
 
 function App() {
-
+  //изначальный массив слов
   const [words, setWords] = useState([]);
   // состояние индикатора загрузки
   const [loading, setLoading] = useState(true);
   //состояние ошибки
   const [error, setError] = useState(null);
-  //отображение формы по клику на плюсе
+
 
   const fetchWords = async () => {
     await fetch(`./api/words`)
@@ -47,8 +48,9 @@ function App() {
     setWords((words) => [...words, data])
   }
 
-  //редактирование
+  //обновление списка после внесения изменений
   const fixWord = async (fixedWord) => {
+    console.log(fixWord);
     const response = await fetch(`/api/words/${fixedWord.id}/update`, {
       method: "POST",
       headers: {
@@ -72,11 +74,8 @@ function App() {
   const [formVisible, setFormVisible] = useState(false);
   let myForm;
   if (formVisible) {
-    myForm = <div className="">
-      <Form /> </div >
-  } else {
-    myForm = <></>
-  }
+    myForm = <div className=""><Form /></div >
+  } else { myForm = <></> }
 
   //добавить форму для ввода нового слова
   const addForm = () => {
@@ -87,6 +86,7 @@ function App() {
     <AllWordsContext.Provider
       value={{
         words: words,
+        setWords,
         fetchWords: fetchWords,
         fixWord,
         delWord,
@@ -96,7 +96,7 @@ function App() {
         addForm,
         setFormVisible,
         formVisible: formVisible,
-        addWord
+        addWord,
       }}
     >
       <Router>

@@ -17,6 +17,21 @@
     margin: 4px;
 }
 
+.pointEdit {
+    background-color: rgb(255, 57, 186);
+    border: 2px solid blue;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 6px;
+    margin: 4px;
+}
+
+.inputs {
+    margin: 0 5px;
+}
+
 .baseWord {
     width: 25%;
     padding: 0 5px;

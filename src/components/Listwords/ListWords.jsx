@@ -1,20 +1,42 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import style from "./ListWords.module.css"
 import AllWordsContext from "../../context/AllWordsContext";
+import WordItem from "../WorItem/WordItem";
 
 function ListWords() {
-    const { words, fetchWords, fixWord, delWord, loading } = useContext(AllWordsContext);
+    const { words, fetchWords, loading } = useContext(AllWordsContext);
+
+    // //задаем по умолчанию кнопку save неактивной
+    const [isDisabled, setIsDisabled] = useState(true);
+
+    //запуск проверки после изменений формы
+    const checkEmpty = () => {
+        let inputs = document.getElementsByClassName("inputs");
+        let empty = 4;
+
+        for (let i = 0; i < inputs.length; i++) {
+            const userWord = inputs[i].value;
+
+            //обводка пустого поля ввода
+            if (userWord !== "") {
+                inputs[i].classList.remove("incorrect");
+                empty -= 1;
+            } else {
+                inputs[i].classList.add("incorrect")
+            }
+
+            //блокировка кнопки save, если есть пустые поля инпутов
+            if (empty === 0) {
+                setIsDisabled(false);
+            } else {
+                setIsDisabled(true)
+            }
+        }
+    }
 
     useEffect(() => {
         fetchWords();
     }, []);
-
-
-    const handleFixWord = (fixedWord) => {
-        console.log(fixedWord);
-        fixWord(fixedWord);
-    };
-    const handleDelWord = (id) => { delWord(id) };
 
     return (
         <div className={style.list} >
@@ -39,18 +61,16 @@ function ListWords() {
                 </>
             ) : (
                 <div>
-                    {words.map((word) => (
-                        <li className={style.point} key={word.id}>
-                            <span className={style.baseWord}>{word.english} </span>
-                            <span className={style.baseWord}>{word.transcription}</span>
-                            <span className={style.baseWord}>{word.russian}</span>
-                            {/* <span className={style.baseWord}>{word.topic}</span> */}
-                            <button onClick={() => handleFixWord(word)}>Изменить</button>
-                            <button onClick={() => handleDelWord(word.id)}>Удалить</button>
-                        </li>
+                    {words.map(word => (
+                        <WordItem
+                            key={word.id}
+                            word={word}
+                            checkEmpty={checkEmpty}
+                            isDisabled={isDisabled}
+                            setIsDisabled={setIsDisabled}
+                        />
                     ))}
                 </div>
-
             )}
         </div>
     )

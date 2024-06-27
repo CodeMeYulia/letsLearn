@@ -6,7 +6,6 @@ const AllWordsContext = createContext({
     addWord: () => { },
     fixWord: () => { },
     deleWord: () => { },
-
 });
 
 export default AllWordsContext;
