@@ -1,6 +1,6 @@
 .container {
     border-radius: 25px;
-    margin: 30px 0 30px 0;
+    margin: 4em 0 4em 0;
 }
 
 .title {
@@ -16,6 +16,7 @@
     justify-content: space-evenly;
     width: 75%;
     min-height: 250px;
-    margin: 20px auto;
-    padding: 15px 10px;
+    max-height: 80vh;
+    margin: 2em auto;
+    padding: 1em;
 }

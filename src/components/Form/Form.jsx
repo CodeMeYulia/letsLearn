@@ -4,7 +4,7 @@ import AllWordsContext from "../../context/AllWordsContext";
 
 
 const Form = () => {
-    const { addWord, formVisible, setFormVisible, } = useContext(AllWordsContext);
+    const { addWord, formVisible, setFormVisible } = useContext(AllWordsContext);
 
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
@@ -18,7 +18,6 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const myWord = { english, transcription, russian, topic };
-        // console.log(myWord);
         handleAddWord(myWord);
         setEnglish("");
         setTranscription("");
@@ -64,16 +63,16 @@ const Form = () => {
             <form className={style.point} onSubmit={handleSubmit} onChange={checkEmpty}>
                 <label >
                     <input type="text" className='inputs' placeholder="new word" required name="english"
-                        onChange={(e) => setEnglish(e.target.value)} value={english} />
+                        onChange={(e) => setEnglish(e.target.value)} value={english} minLength="2" pattern="^[a-z]{1,15}$" />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="transcription" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} />
+                    <input type="text" className='inputs' placeholder="transcription" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} minLength="2" pattern="^\[[a-z:]{1,15}\]$" />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="translation" name="translation" onChange={(e) => setRussian(e.target.value)} value={russian} />
+                    <input type="text" className='inputs' placeholder="translation" name="translation" onChange={(e) => setRussian(e.target.value)} value={russian} minLength="4" pattern="^[а-я]{1,15}$" />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="topic" name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} />
+                    <input type="text" className='inputs' placeholder="topic" name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} minLength="2" pattern="^[а-я]{1,15}$" />
                 </label>
                 <div>
                     <button type='submit' id="save" className="save" disabled={isDisabled}> сохр. </button>

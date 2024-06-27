@@ -1,15 +1,17 @@
 .topic_card {
+    box-sizing: border-box;
     align-items: center;
     background: rgb(250, 239, 255);
     border-radius: 10px;
     display: flex;
     flex-direction: row;
-    font-size: 1.5em;
+    font-size: 1.6em;
     justify-content: center;
     min-width: 40%;
     min-height: 60px;
-    margin: 10px;
-    padding: 5px;
+    /* max-height: 50vh; */
+    margin: 0.2em;
+    padding: 0.5em;
 }
 
 .tocard {

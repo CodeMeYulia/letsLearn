@@ -142,16 +142,6 @@ h3 {
   padding: 0 20px;
 }
 
-.illustration {
-  background-color: rgb(255, 255, 255);
-  border-radius: 30px;
-  width: 150px;
-  height: 150px;
-  margin: auto;
-  text-align: center;
-  padding-top: 40px;
-}
-
 .slade {
   font-size: 3rem;
 }
