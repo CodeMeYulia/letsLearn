@@ -1,8 +1,11 @@
 .list {
     display: flex;
     flex-direction: column;
+    flex-flow: column wrap;
     align-items: stretch;
     text-align: left;
+    max-height: 90%;
+    justify-content: normal;
 }
 
 
@@ -28,10 +31,6 @@
     margin: 4px;
 }
 
-.inputs {
-    margin: 0 5px;
-}
-
 .baseWord {
     width: 25%;
     padding: 0 5px;
@@ -47,13 +46,11 @@
     width: 10%;
 }
 
-
-
-
 .pushBtn {
     background-color: salmon;
 }
 
+/* loader */
 .cssloaddots {
     width: 0;
     height: 0;

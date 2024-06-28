@@ -63,16 +63,20 @@ const Form = () => {
             <form className={style.point} onSubmit={handleSubmit} onChange={checkEmpty}>
                 <label >
                     <input type="text" className='inputs' placeholder="new word" required name="english"
-                        onChange={(e) => setEnglish(e.target.value)} value={english} minLength="2" pattern="^[a-z]{1,15}$" />
+                        onChange={(e) => setEnglish(e.target.value)} value={english} minLength="2" pattern="^[a-z, ]{1,25}$"
+                        title="Только строчные буквы англ. алфавита от 2 до 25 символов" />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="transcription" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} minLength="2" pattern="^\[[a-z:]{1,15}\]$" />
+                    <input type="text" className='inputs' placeholder="transcription" name="transcription" onChange={(e) => setTranscription(e.target.value)}
+                        value={transcription} minLength="2" pattern="^\[[a-z:, ]{1,15}\]$" title="Только строчные буквы англ. транскрипции от 2 до 15 символов, в квадратных скобках" />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="translation" name="translation" onChange={(e) => setRussian(e.target.value)} value={russian} minLength="4" pattern="^[а-я]{1,15}$" />
+                    <input type="text" className='inputs' placeholder="translation" name="translation" onChange={(e) => setRussian(e.target.value)} value={russian} minLength="4"
+                        pattern="^[а-я, ]{1,25}$" title="Только строчные буквы русского алфавита от 2 до 25 символов" />
                 </label>
                 <label >
-                    <input type="text" className='inputs' placeholder="topic" name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} minLength="2" pattern="^[а-я]{1,15}$" />
+                    <input type="text" className='inputs' placeholder="topic" name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} minLength="2"
+                        pattern="^[а-я, ]{1,25}$" title="Только строчные буквы русского алфавита от 2 до 25 символов" />
                 </label>
                 <div>
                     <button type='submit' id="save" className="save" disabled={isDisabled}> сохр. </button>

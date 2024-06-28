@@ -3,6 +3,7 @@ import AllWordsContext from "../../context/AllWordsContext";
 import ListTopics from "../ListTopic/ListTopics";
 import ListWords from "../Listwords/ListWords";
 import AddWord from "../AddWord/AddWord";
+import style from './Home.module.css'
 
 function Home() {
     const { myForm } = useContext(AllWordsContext);
@@ -83,7 +84,7 @@ function Home() {
     return (
         <main>
             <aside>
-                <div>
+                <div className={style.listContainer}>
                     <AddWord />
                     <h2>Слова для повторения</h2>
                     <ListWords />
