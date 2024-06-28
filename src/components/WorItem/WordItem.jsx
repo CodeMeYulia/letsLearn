@@ -15,7 +15,6 @@ function WordItem({ word }) {
     const handleEditClick = () => {
         //режим редактирования для данного слова
         setEditingId(word.id);
-        Y
     }
 
     const handleEditSubmit = (e) => {
@@ -68,7 +67,7 @@ function WordItem({ word }) {
                     // Форма для редактирования
                     <form className={style.pointEdit} onSubmit={handleEditSubmit} onChange={checkEmpty}>
                         <input type="text" className="inputs" name="english" onChange={(e) => setEnglish(e.target.value)} value={english} placeholder={word.english} minLength="2" pattern="^[a-z]{1,15}$" />
-                        <input type="text" className="inputs" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} placeholder={word.transcription} minLength="2" pattern="^\[[a-z:]{1,15}\]$" />
+                        <input type="text" className="inputs" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} placeholder={word.transcription} minLength="2" pattern="^\[[a-zθʌəôʃēɔˈ:]{1,15}\]$" />
                         <input type="text" className="inputs" name="russian" onChange={(e) => setRussian(e.target.value)} value={russian} placeholder={word.russian} minLength="4" pattern="^[а-я]{1,15}$" />
                         <input type="text" className='inputs' name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} placeholder={word.topic ? word.topic : "topic"} minLength="2" pattern="^[а-я]{1,15}$" />
                         <div>
