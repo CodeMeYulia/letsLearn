@@ -66,10 +66,14 @@ function WordItem({ word }) {
                 editingId === word.id ? (
                     // Форма для редактирования
                     <form className={style.pointEdit} onSubmit={handleEditSubmit} onChange={checkEmpty}>
-                        <input type="text" className="inputs" name="english" onChange={(e) => setEnglish(e.target.value)} value={english} placeholder={word.english} minLength="2" pattern="^[a-z]{1,15}$" />
-                        <input type="text" className="inputs" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} placeholder={word.transcription} minLength="2" pattern="^\[[a-zθʌəôʃēɔˈ:]{1,15}\]$" />
-                        <input type="text" className="inputs" name="russian" onChange={(e) => setRussian(e.target.value)} value={russian} placeholder={word.russian} minLength="4" pattern="^[а-я]{1,15}$" />
-                        <input type="text" className='inputs' name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} placeholder={word.topic ? word.topic : "topic"} minLength="2" pattern="^[а-я]{1,15}$" />
+                        <input type="text" className="inputs" name="english" onChange={(e) => setEnglish(e.target.value)} value={english} placeholder={word.english} minLength="2"
+                            pattern="^[a-z, ]{1,25}$" title="Только строчные буквы англ. алфавита от 2 до 25 символов" />
+                        <input type="text" className="inputs" name="transcription" onChange={(e) => setTranscription(e.target.value)} value={transcription} placeholder={word.transcription} minLength="2"
+                            pattern="^\[[a-z:, ]{1,15}\]$" title="Только строчные буквы англ. транскрипции от 2 до 15 символов, в квадратных скобках" />
+                        <input type="text" className="inputs" name="russian" onChange={(e) => setRussian(e.target.value)} value={russian} placeholder={word.russian} minLength="4"
+                            pattern="^[а-я, ]{1,25}$" title="Только строчные буквы русского алфавита от 2 до 25 символов" />
+                        <input type="text" className='inputs' name="topic" onChange={(e) => setTopic(e.target.value)} value={topic} placeholder={word.topic ? word.topic : "topic"} minLength="2"
+                            pattern="^[а-я, ]{1,25}$" title="Только строчные буквы русского алфавита от 2 до 25 символов" />
                         <div>
                             <button type='submit' id="save" className="save" disabled={isDisabled}> сохр. </button>
                             <button type='button' id="esc" className="esc" onClick={handleEsc}>отм.</button>

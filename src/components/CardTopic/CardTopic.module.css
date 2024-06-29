@@ -5,11 +5,10 @@
     border-radius: 10px;
     display: flex;
     flex-direction: row;
-    font-size: 1.6em;
+    font-size: 1.2em;
     justify-content: center;
     min-width: 40%;
     min-height: 60px;
-    /* max-height: 50vh; */
     margin: 0.2em;
     padding: 0.5em;
 }
@@ -21,6 +20,6 @@
 
 .topic_card:hover {
     background-color: rgb(252, 185, 229);
-    border: 5px dotted white;
+    border: 3px dotted white;
     color: rgb(252, 252, 252);
 }

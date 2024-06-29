@@ -53,7 +53,7 @@ h3 {
   flex-direction: column;
   border: 1px solid grey;
   border-radius: 30px;
-  width: 30vw;
+  min-width: 30vw;
   height: 250px;
   text-align: center;
   padding: 30px 2px;
@@ -83,7 +83,7 @@ h3 {
 
 .word,
 .translation {
-  font-size: 3.5rem;
+  font-size: 3.3rem;
   margin: auto;
 }
 

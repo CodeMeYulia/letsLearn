@@ -117,7 +117,6 @@ function Slider() {
                     <img src='./images/angle_left.png' width={30} alt="arrow_left"></img>
                 </div>
                 <Card
-                    // id={currentCard.id}
                     english={currentCard.english}
                     transcription={currentCard.transcription}
                     russian={currentCard.russian}

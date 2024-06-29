@@ -1,14 +1,15 @@
 .container {
-    border-radius: 25px;
+    border-radius: 20px;
     margin: 4em 0 4em 0;
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     padding: 1rem;
 }
 
 .topics {
+    box-sizing: border-box;
     background-color: rgb(217, 255, 0);
     border-radius: 30px;
     display: flex;
