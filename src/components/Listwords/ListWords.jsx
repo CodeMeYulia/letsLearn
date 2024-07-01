@@ -1,13 +1,22 @@
-import React, { useEffect, useContext, useState } from "react";
-import style from "./ListWords.module.css"
-import AllWordsContext from "../../context/AllWordsContext";
+import { useEffect, useState } from "react";
+import { observer } from 'mobx-react';
+import wordsStore from "../../stores/wordsStore";
+import style from "./ListWords.module.css";
 import WordItem from "../WorItem/WordItem";
 
-function ListWords() {
-    const { words, fetchWords, loading } = useContext(AllWordsContext);
+const ListWords = observer(() => {
+    const { words, fetchWords } = wordsStore;
+    // console.log(words);
 
-    // //задаем по умолчанию кнопку save неактивной
+    //задаем по умолчанию кнопку save неактивной
     const [isDisabled, setIsDisabled] = useState(true);
+    // состояние индикатора загрузки
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchWords();
+    }, []);
+
 
     //запуск проверки после изменений формы
     const checkEmpty = () => {
@@ -34,10 +43,6 @@ function ListWords() {
         }
     }
 
-    useEffect(() => {
-        fetchWords();
-    }, []);
-
     return (
         <div className={style.list} >
             {loading ? (
@@ -54,7 +59,6 @@ function ListWords() {
                             <filter id="goo">
                                 <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12" ></feGaussianBlur>
                                 <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7" result="goo" ></feColorMatrix>
-                                {/* <!--<feBlend in2="goo" in="SourceGraphic" result="mix" ></feBlend>--> */}
                             </filter>
                         </defs>
                     </svg>
@@ -68,12 +72,13 @@ function ListWords() {
                             checkEmpty={checkEmpty}
                             isDisabled={isDisabled}
                             setIsDisabled={setIsDisabled}
+                            setLoading={setLoading}
                         />
                     ))}
                 </div>
             )}
         </div>
     )
-};
+})
 
 export default ListWords;

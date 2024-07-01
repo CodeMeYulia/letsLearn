@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
-import AllWordsContext from "../../context/AllWordsContext";
+import React, { useState } from "react";
+import { observer } from "mobx-react";
 import style from "../Listwords/ListWords.module.css"
 
 
-function WordItem({ word }) {
-    const { fixWord, delWord } = useContext(AllWordsContext);
+const WordItem = observer((props) => {
+    const { word, fixWord, delWord } = props;
     const [editingId, setEditingId] = useState(null);
 
     const [english, setEnglish] = useState("");
@@ -30,7 +30,6 @@ function WordItem({ word }) {
 
     const handleEsc = () => setEditingId(null);
     const handleDelWord = (id) => delWord(id);
-
 
     //задаем по умолчанию кнопку save неактивной
     const [isDisabled, setIsDisabled] = useState(true);
@@ -92,6 +91,6 @@ function WordItem({ word }) {
             }
         </>
     )
-}
+})
 
 export default WordItem;

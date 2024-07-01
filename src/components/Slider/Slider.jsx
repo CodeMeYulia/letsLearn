@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Card from "../Card";
-import AllWordsContext from "../../context/AllWordsContext";
+import { observer } from 'mobx-react';
+import wordsStore from "../../stores/wordsStore";
 
-
-function Slider() {
-    const { words } = useContext(AllWordsContext);
-
+const Slider = observer(() => {
+    const { words } = wordsStore;
+    console.log(words);
 
     // const allWords = [
     //     {
@@ -133,7 +133,7 @@ function Slider() {
         </ div>
 
     )
-}
+})
 
 export default Slider;
 

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { observer } from "mobx-react";
 import Slider from '../Slider/Slider';
 
-function Learn() {
+const Learn = observer(() => {
     const [learned, setLearned] = useState(0);
     const handleLearned = () => {
         setLearned(learned + 1);
@@ -27,8 +28,9 @@ function Learn() {
                 <button className='res' onClick={handleCountHard}><img src='./images/cross-circle.png' width='18px' alt="cross" />сложные {hard}</button>
             </div>
         </div>
-
     )
 }
+)
+
 
 export default Learn;

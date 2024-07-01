@@ -1,13 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import style from './AddWord.module.css';
-import AllWordsContext from "../../context/AllWordsContext";
+import { observer } from 'mobx-react';
 
-function AddWord() {
-    const { addForm } = useContext(AllWordsContext);
+
+const AddWord = observer((setFormVisible) => {
+
+    //добавить форму для ввода нового слова
+    const addForm = () => {
+        setFormVisible(true);
+    }
 
     return (
         <button type="button" className={style.add} onClick={addForm}>+</button>
     )
-}
+
+})
 
 export default AddWord;

@@ -1,19 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import style from './Form.module.css';
-import AllWordsContext from "../../context/AllWordsContext";
+import { observer } from 'mobx-react';
 
-
-const Form = () => {
-    const { addWord, formVisible, setFormVisible } = useContext(AllWordsContext);
-
+const Form = observer((props) => {
+    const { addWord, formVisible, setFormVisible } = props;
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
     const [russian, setRussian] = useState("");
     const [topic, setTopic] = useState("");
-
-    const handleEsc = () => {
-        setFormVisible(false);
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +17,10 @@ const Form = () => {
         setTranscription("");
         setRussian("")
         setTopic("")
+    }
+
+    const handleEsc = () => {
+        setFormVisible(false);
     }
 
     const handleAddWord = (myWord) => {
@@ -86,5 +84,6 @@ const Form = () => {
         </>
     )
 }
+)
 
 export default Form;

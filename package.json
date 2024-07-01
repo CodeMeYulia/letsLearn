@@ -2,10 +2,15 @@
   "name": "letslearn",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
+  "proxy": "http://itgirlschool.justmakeit.ru",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "mobx": "^6.12.4",
+    "mobx-react": "^9.1.1",
+    "mobx-react-lite": "^4.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
@@ -37,5 +42,29 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://itgirlschool.justmakeit.ru"
+  "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.24.7",
+    "@babel/preset-env": "^7.24.7"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  }
 }

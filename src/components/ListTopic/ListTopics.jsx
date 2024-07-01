@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
+import { observer } from 'mobx-react';
 import CardTopic from '../CardTopic/CardTopic';
 import style from './ListTopic.module.css';
-import AllWordsContext from "../../context/AllWordsContext";
+import wordsStore from "../../stores/wordsStore";
 
-function ListTopics() {
-    const { words } = useContext(AllWordsContext);
-
+const ListTopics = observer(() => {
+    const { words } = wordsStore;
     let currentWords = [];
 
     const handlePickTopic = (tags) => {
@@ -38,4 +38,5 @@ function ListTopics() {
     );
 }
 
+)
 export default ListTopics
