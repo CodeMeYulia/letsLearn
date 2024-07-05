@@ -13,3 +13,4 @@ const CardTopic = ({ tags, handleClick }) => {
 }
 
 export default CardTopic;
+

@@ -1,18 +1,22 @@
 import React, { useState } from "react";
+import style from "../Listwords/ListWords.module.css";
 import { observer } from "mobx-react";
-import style from "../Listwords/ListWords.module.css"
+import { wordsStore } from "../../stores/wordsStore";
 
 
-const WordItem = observer((props) => {
-    const { word, fixWord, delWord } = props;
+const WordItem = observer(({ word }) => {
+    const { delWord, fixWord } = wordsStore;
+
+    //задаем по умолчанию кнопку save неактивной
     const [editingId, setEditingId] = useState(null);
-
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
     const [russian, setRussian] = useState("");
     const [topic, setTopic] = useState("");
 
-    const handleEditClick = () => {
+    const handleEditClick = (word) => {
+        console.log(word);
+
         //режим редактирования для данного слова
         setEditingId(word.id);
     }
@@ -94,3 +98,4 @@ const WordItem = observer((props) => {
 })
 
 export default WordItem;
+

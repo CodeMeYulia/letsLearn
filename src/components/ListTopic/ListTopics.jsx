@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from 'mobx-react';
 import CardTopic from '../CardTopic/CardTopic';
 import style from './ListTopic.module.css';
-import wordsStore from "../../stores/wordsStore";
+import { wordsStore } from "../../stores/wordsStore";
 
 const ListTopics = observer(() => {
     const { words } = wordsStore;
@@ -40,3 +40,4 @@ const ListTopics = observer(() => {
 
 )
 export default ListTopics
+

@@ -23,8 +23,7 @@ const Header = observer(() => {
 
         </header>
     )
-}
-
-)
+})
 
 export default Header;
+

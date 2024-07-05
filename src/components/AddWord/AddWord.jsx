@@ -2,8 +2,7 @@ import React from "react";
 import style from './AddWord.module.css';
 import { observer } from 'mobx-react';
 
-
-const AddWord = observer((setFormVisible) => {
+const AddWord = observer(({ setFormVisible }) => {
 
     //добавить форму для ввода нового слова
     const addForm = () => {

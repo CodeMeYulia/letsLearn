@@ -1,41 +1,23 @@
 import { makeAutoObservable } from "mobx";
+// const baseUrl = "http://itgirlschool.justmakeit.ru";
 
-//класс хранилища со списком слов
 class WordsStore {
+    //наше состояние списка
     words = [];
-    // login = false;
-    error = false;
-    loading = true;
+    //login = false;
+    //error = false;
     constructor() {
-        makeAutoObservable(this);
-        // this.fetchWords = this.fetchWords.bind(this);
+        makeAutoObservable(this)
     }
 
-    // получение данных с сервера
-    fetchWords = async () => {
-        await fetch(`./api/words`)
-            .then(response => {
-                if (response.ok) {
-                    //статус 200
-                    const data = response.json();
-                    return data;
-                } else {
-                    throw new Error('Ups...Something went wrong');
-                }
-            })
-            .then((data) => {
-                this.words = data;
-                this.loading = false;
-            })
-            .catch(error => this.error = error)
+    fetchWords = async (words) => {
+        const response = await fetch("/api/words");
+        //статус 200
+        if (response.ok) {
+            const data = await response.json();
+            this.words = data;
+        }
     }
-
-    // fetchWords = async () => {
-    //     const response = await fetch("/api/words");
-    //     const data = await response.json();
-    //     this.words = data;
-    //     this.loading = false;
-    // };
 
     addWord = async (myWord) => {
         const response = await fetch("./api/words/add", {
@@ -49,7 +31,7 @@ class WordsStore {
         this.words.push(data);
     }
 
-    //удалить
+    // удалить
     delWord = async (id) => {
         await fetch(`/api/words/${id}/delete`, {
             method: "POST",
@@ -57,41 +39,39 @@ class WordsStore {
         this.words = this.words.filter((word) => word.id !== id);
     }
 
-    //обновление списка после внесения изменений
     fixWord = async (fixedWord) => {
-        // console.log(JSON.stringify(fixedWord));
-        try {
-            const response = await fetch(`/api/words/${fixedWord.id}/update`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Cache-Control": "no-cache"
-                },
-                body: JSON.stringify(fixedWord)
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            // console.log(data);
-            if (data && data.id) {
-                //обновляем состояние
-                this.words = this.words.map((word) => (word.id === fixedWord.id ? data : word))
-            } else {
-                throw new Error('Server did not return updates word object')
-            }
-
-        }
-        catch (error) {
-            console.error("Ошибка при обновлении слова:", error)
-        }
+        const response = await fetch(`./api/words/${fixedWord.id}/update`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(fixedWord)
+        });
+        const data = await response.json();
+        this.words = this.words.map((word) =>
+            word.id === fixedWord.id ? data : word
+        )
     };
 }
 
+//экземпляр хранилища
+export const wordsStore = new WordsStore();
 
-
-//создаем экземпляр хранилища
-const wordsStore = new WordsStore();
-export default wordsStore;
-//отслеживаем его состояние
+//     // получение данных с сервера
+//     fetchWords = async () => {
+//         await fetch(`./api/words`)
+//             .then(response => {
+//                 if (response.ok) {
+//                     //статус 200
+//                     const data = response.json();
+//                     return data;
+//                 } else {
+//                     throw new Error('Ups...Something went wrong');
+//                 }
+//             })
+//             .then((data) => {
+//                 this.words = data;
+//                 this.loading = false;
+//             })
+//             .catch(error => this.error = error)
+//     }

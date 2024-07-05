@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import style from './Form.module.css';
 import { observer } from 'mobx-react';
+import { wordsStore } from '../../stores/wordsStore';
 
-const Form = observer((props) => {
-    const { addWord, formVisible, setFormVisible } = props;
+const Form = observer(({ formVisible, setFormVisible }) => {
+    const { addWord } = wordsStore;
+    // const { formVisible, setFormVisible } = props;
+
+    const handleEsc = () => {
+        setFormVisible(false);
+    }
     const [english, setEnglish] = useState("");
     const [transcription, setTranscription] = useState("");
     const [russian, setRussian] = useState("");
@@ -19,13 +25,9 @@ const Form = observer((props) => {
         setTopic("")
     }
 
-    const handleEsc = () => {
-        setFormVisible(false);
-    }
-
     const handleAddWord = (myWord) => {
         addWord(myWord)
-        setFormVisible(!formVisible);
+        setFormVisible(false);
     }
 
     //задаем по умолчанию кнопку save в формах неактивной
@@ -83,7 +85,7 @@ const Form = observer((props) => {
             </form>
         </>
     )
-}
-)
+})
 
 export default Form;
+

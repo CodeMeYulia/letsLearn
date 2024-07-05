@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import wordsStore from './stores/wordsStore';
 import { Provider } from 'mobx-react';
+import { wordsStore } from './stores/wordsStore'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
