@@ -16,9 +16,12 @@ class WordsStore {
         if (response.ok) {
             const data = await response.json();
             this.words = data;
+        } else {
+            throw new Error('Ups...Something went wrong');
         }
     }
 
+    //добавить
     addWord = async (myWord) => {
         const response = await fetch("./api/words/add", {
             method: "POST",
@@ -39,6 +42,7 @@ class WordsStore {
         this.words = this.words.filter((word) => word.id !== id);
     }
 
+    //редактировать
     fixWord = async (fixedWord) => {
         const response = await fetch(`./api/words/${fixedWord.id}/update`, {
             method: "POST",
@@ -56,22 +60,3 @@ class WordsStore {
 
 //экземпляр хранилища
 export const wordsStore = new WordsStore();
-
-//     // получение данных с сервера
-//     fetchWords = async () => {
-//         await fetch(`./api/words`)
-//             .then(response => {
-//                 if (response.ok) {
-//                     //статус 200
-//                     const data = response.json();
-//                     return data;
-//                 } else {
-//                     throw new Error('Ups...Something went wrong');
-//                 }
-//             })
-//             .then((data) => {
-//                 this.words = data;
-//                 this.loading = false;
-//             })
-//             .catch(error => this.error = error)
-//     }
