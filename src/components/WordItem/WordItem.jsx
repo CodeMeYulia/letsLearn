@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "../Listwords/ListWords.module.css";
 import { observer } from "mobx-react";
 import { wordsStore } from "../../stores/wordsStore";
@@ -31,6 +31,17 @@ const WordItem = observer(({ word }) => {
         fixWord(fixedWord);
         setEditingId(null);
     }
+
+    //подстановка текущих значений в поля редактируемой формы
+    useEffect(() => {
+        if (editingId === word.id) {
+            setEnglish(word.english)
+            setTranscription(word.transcription)
+            setRussian(word.russian)
+            setTopic(word.topic)
+        }
+
+    }, [editingId, word])
 
     const handleEsc = () => setEditingId(null);
     const handleDelWord = (id) => delWord(id);

@@ -8,7 +8,7 @@ const ListWords = observer(() => {
     const { words, fetchWords } = wordsStore;
     // состояние индикатора загрузки
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
 
     useEffect(() => {
         const loadList = async () => {
