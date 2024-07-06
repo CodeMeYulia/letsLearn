@@ -23,7 +23,7 @@ const ListWords = observer(() => {
         loadList();
     }, [])
     return (
-        <div>
+        <div className={style.list}>
             {
                 isLoading ?
                     (<>
